@@ -35,6 +35,9 @@ And you're done. The script will ask you questions of what you wanna do?[^1]
 
 <br>
 
+## Workings ⚙️
+If you wanna see the workings, either check the `Source Code` or [visit this page](.gitignore/working.md)
+
 > [!IMPORTANT]
 > MORE UPDATES ARE COOMING SOON TO THE SCRIPT
 
