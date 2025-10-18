@@ -8,7 +8,7 @@ The ultimate all-in-one guide for optimizing Windows 11. Integrate WinUtil deblo
 Now that out of the way then we can start the fun part.
 <Br>
 
-## Installation 🪄
+## 🪄 Installation
 1. Download the zip from the latest release
 2. Unzip it from any of the Unzipping Programs
 3. Open `Terminal (Admin)` by right clicking on start button
@@ -41,17 +41,19 @@ If you wanna see the workings, either check the `Source Code` or [visit this pag
 > [!IMPORTANT]
 > MORE UPDATES ARE COOMING SOON TO THE SCRIPT
 
-## Credits
+## 💫 Credits
 * Chris Titus Tech- [WinUtil](https://github.com/ChrisTitusTech/winutil)
 * Mestechtips - [WinHance](https://github.com/memstechtips/Winhance)
 * Cloudflare - [Cloudflare DNS](https://developers.cloudflare.com/1.1.1.1/setup/)
 * Adguard - [Adguard DNS](https://adguard-dns.io/en/public-dns.html)
 
-## Sponsor
+## 💝 Sponsor
 I am not a developer but this is my second project that I tried to compiled for my community so we can create a difference for a better future.
 <br>
 
 ### Support me by:-
 
-<a href="https://www.buymeacoffee.com/mrdarksidetm" target="_blank"><img width="200" height="300" alt="white-button" src="https://github.com/user-attachments/assets/77b9976a-8a40-49e7-bdd6-de35bd8c6203" /></a>
+<a href="https://www.buymeacoffee.com/mrdarksidetm" target="_blank"><img width="200" height="500" alt="white-button" src="https://github.com/user-attachments/assets/77b9976a-8a40-49e7-bdd6-de35bd8c6203" /></a>
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/H2H21N0OAT)
+<a href="https://www.upi.me/pay?pa=abhisidetm@ptyes&am=150" target="_blank"><img width="100" height="700" alt="upi" src="https://github.com/user-attachments/assets/e54d926f-68e5-4d9f-8801-5c1499f7d3d5" /></a>
+
