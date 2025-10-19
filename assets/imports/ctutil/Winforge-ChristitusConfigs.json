@@ -1,0 +1,114 @@
+{
+  "WPFTweaks": [
+    "WPFTweaksRestorePoint",
+    "WPFTweaksTele",
+    "WPFTweaksDisableBGapps",
+    "WPFTweaksDisableCrossDeviceResume",
+    "WPFTweaksPowershell7",
+    "WPFTweaksDiskCleanup",
+    "WPFTweaksRemoveHome",
+    "WPFTweaksAH",
+    "WPFTweaksServices",
+    "WPFTweaksDebloatAdobe",
+    "WPFTweaksTeredo",
+    "WPFTweaksDVR",
+    "WPFTweaksRemoveGallery",
+    "WPFTweaksHome",
+    "WPFTweaksEdgeDebloat",
+    "WPFTweaksDeleteTempFiles",
+    "WPFTweaksRemoveCopilot",
+    "WPFTweaksRecallOff",
+    "WPFTweaksPowershell7Tele",
+    "WPFTweaksDisableExplorerAutoDiscovery",
+    "WPFTweaksConsumerFeatures",
+    "WPFTweaksRemoveOnedrive",
+    "WPFTweaksBlockAdobeNet"
+  ],
+  "Install": [
+    {
+      "winget": "SumatraPDF.SumatraPDF",
+      "choco": "sumatrapdf"
+    },
+    {
+      "winget": "Valve.Steam",
+      "choco": "steam-client"
+    },
+    {
+      "winget": "VideoLAN.VLC",
+      "choco": "vlc"
+    },
+    {
+      "winget": "AdrienAllard.FileConverter",
+      "choco": "file-converter"
+    },
+    {
+      "winget": "7zip.7zip",
+      "choco": "7zip"
+    },
+    {
+      "winget": "JanDeDobbeleer.OhMyPosh",
+      "choco": "oh-my-posh"
+    },
+    {
+      "winget": "voidtools.Everything",
+      "choco": "everything"
+    },
+    {
+      "winget": "CPUID.CPU-Z",
+      "choco": "cpu-z"
+    },
+    {
+      "winget": "Microsoft.PowerToys",
+      "choco": "powertoys"
+    },
+    {
+      "winget": "LocalSend.LocalSend",
+      "choco": "localsend.install"
+    },
+    {
+      "winget": "MartiCliment.UniGetUI",
+      "choco": "wingetui"
+    },
+    {
+      "winget": "Brave.Brave",
+      "choco": "brave"
+    },
+    {
+      "winget": "GlennDelahoy.SnappyDriverInstallerOrigin",
+      "choco": "sdio"
+    },
+    {
+      "winget": "Microsoft.WindowsTerminal",
+      "choco": "microsoft-windows-terminal"
+    },
+    {
+      "winget": "TheDocumentFoundation.LibreOffice",
+      "choco": "libreoffice-fresh"
+    },
+    {
+      "winget": "FxSound.FxSound",
+      "choco": "fxsound"
+    }
+  ],
+  "WPFFeature": [
+    "WPFFeatureDisableSearchSuggestions"
+  ],
+  "WPFInstall": [
+    "WPFInstallsumatra",
+    "WPFInstallsteam",
+    "WPFInstallvlc",
+    "WPFInstallfileconverter",
+    "WPFInstall7zip",
+    "WPFInstallposh",
+    "WPFInstallesearch",
+    "WPFInstallcpuz",
+    "WPFInstallpowertoys",
+    "WPFInstalllocalsend",
+    "WPFInstallwingetui",
+    "WPFInstallbrave",
+    "WPFInstallsdio",
+    "WPFInstallterminal",
+    "WPFInstalllibreoffice",
+    "WPFInstallfxsound"
+  ]
+}
