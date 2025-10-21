@@ -22,7 +22,7 @@ Set-ExecutionPolicy RemoteSigned
 
 Then `cd path` 
 > remove the "path" with the actual path of the folder. <br>
-> Eg - `cd C:/WinForge`
+> Eg - `cd C:\WinForge`
 
 ```
 .\WinForge-OptionalSetup.ps1
@@ -53,7 +53,6 @@ I am not a developer but this is my second project that I tried to compiled for 
 
 ### Support me by:-
 
-<a href="https://www.buymeacoffee.com/mrdarksidetm" target="_blank"><img width="200" height="500" alt="white-button" src="https://github.com/user-attachments/assets/77b9976a-8a40-49e7-bdd6-de35bd8c6203" /></a>
+<a href="https://www.buymeacoffee.com/mrdarksidetm" target="_blank"><img width="200" height="500" alt="white-button" src="https://github.com/user-attachments/assets/ef4ad070-523a-4bbf-9d46-7f6116b781e2" /></a>
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/H2H21N0OAT)
 <a href="https://www.upi.me/pay?pa=abhisidetm@ptyes&am=150" target="_blank"><img width="100" height="700" alt="upi" src="https://github.com/user-attachments/assets/e54d926f-68e5-4d9f-8801-5c1499f7d3d5" /></a>
-
