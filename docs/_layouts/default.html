@@ -1,5 +1,44 @@
-<html>
-  <body>
-  <script src="{{ '/assets/js/copy-button.js' | relative_url }}"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if page.title %}
+      <title>{{ page.title | escape }} – {{ site.title | escape }}</title>
+    {% else %}
+      <title>{{ site.title | escape }}</title>
+    {% endif %}
+    {% if page.description %}
+      <meta name="description" content="{{ page.description | escape }}">
+    {% else %}
+      <meta name="description" content="{{ site.description | escape }}">
+    {% endif %}
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#667eea',  // WinForge blue-purple gradient vibe
+              secondary: '#764ba2',
+            }
+          }
+        }
+      }
+    </script>
+    <!-- Optional: Custom CSS for finer tweaks (create /assets/css/custom.css if needed) -->
+    {% if site.stylesheets %}
+      {% for stylesheet in site.stylesheets %}
+        <link href="{{ stylesheet | relative_url }}" rel="stylesheet">
+      {% endfor %}
+    {% endif %}
+  </head>
+  <body class="bg-gray-50 text-gray-900 antialiased">
+    {{ content }}
+    <!-- Copy Button JS (loads at end for performance) -->
+    <script src="{{ '/assets/js/copy-button.js' | relative_url }}"></script>
+    <!-- Optional: Google Analytics or other trackers here -->
   </body>
 </html>
