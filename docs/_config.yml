@@ -3,3 +3,4 @@ description: Windows optimization toolkit
 theme: jekyll-theme-cayman
 url: "https://mrdarksidetm.github.io"
 baseurl: "/WinForge"
+@import "{{ site.theme }}";
