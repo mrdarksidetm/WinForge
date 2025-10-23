@@ -16,17 +16,23 @@ irm https://raw.githubusercontent.com/mrdarksidetm/WinForge/main/src/WinForgeOpt
 ```
 
 If execution policy blocks scripts:
-```Set-ExecutionPolicy -Scope CurrentUser RemoteSigned```
+```
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
 
 
-Or resolve the latest Release asset at runtime:
+Or resolve the latest Release asset at runtime: (Download from the latest release)
+
+> Just copy and paste these commands
+
+```
 $repo = "mrdarksidetm/WinForge"
 $file = "WinForgeOptionalSetup.ps1"
 $api  = "https://api.github.com/repos/$repo/releases/latest"
 $dl   = (Invoke-RestMethod $api).assets | Where-Object name -eq $file | Select-Object -ExpandProperty browser_download_url
 Invoke-WebRequest $dl -OutFile "$env:TEMP\WinForge.ps1"
 Start-Process powershell -Verb RunAs -ArgumentList "-ExecutionPolicy Bypass -NoProfile -File "$env:TEMP\WinForge.ps1""
-
+```
 
 ## What it does
 
