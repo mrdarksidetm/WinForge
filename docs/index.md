@@ -1,7 +1,9 @@
 ---
-layout: default
 title: WinForge
-description: Windows optimization toolkit for Windows 11 – debloat via WinUtil, enhancements via WinHance, DNS tuning, Edge removal safety, and terminal theming
+description: Optimize Windows 11 with ease – debloat, enhance, and customize.
+theme: minima
+plugins:
+  - jekyll-feed
 ---
 
 # WinForge
