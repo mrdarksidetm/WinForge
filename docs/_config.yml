@@ -1,7 +1,25 @@
 title: WinForge
-description: Windows optimization toolkit
-remote_theme: pages-themes/cayman@v0.2.0
+description: The ultimate Windows 11 optimization toolkit – debloat, enhance, and customize with one command
+theme: jekyll-theme-cayman
 url: "https://mrdarksidetm.github.io"
 baseurl: "/WinForge"
+
+# Plugins
 plugins:
-  - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Collections (optional for future docs pages)
+collections:
+  docs:
+    output: true
+    permalink: /docs/:path/
+
+# Exclude from build
+exclude:
+  - node_modules/
+  - package.json
+  - tailwind.config.js
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
