@@ -10,41 +10,60 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
-      - name: Setup Node.js
+
+      # Node for Tailwind build
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      
-      - name: Install Tailwind CLI
-        run: npm install -D tailwindcss
-      
+
+      # Use lockfile for deterministic installs
+      - name: Install dependencies
+        run: npm ci
+
+      # Optional: update Browserslist data (warning only)
+      - name: Update Browserslist DB
+        run: npx update-browserslist-db@latest
+
+      # Build Tailwind (pinned v3 + explicit input/output)
       - name: Build Tailwind CSS
-        run: npx tailwindcss -o docs/assets/css/tailwind.css --minify
-      
+        run: npm run build:css
+
+
+      # If the step above ever fails with permissions, use this instead:
+      # - name: Build Tailwind (node direct)
+      #   run: node ./node_modules/tailwindcss/lib/cli.js -i ./docs/assets/css/style.css -o ./docs/assets/css/tailwind.css --minify
+
+      # Ruby/Jekyll for Pages
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1'
           bundler-cache: true
           cache-version: 0
-      
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      
+
       - name: Build with Jekyll
         run: bundle exec jekyll build --source docs --destination _site
         env:
           JEKYLL_ENV: production
-      
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
 
   deploy:
     environment:
