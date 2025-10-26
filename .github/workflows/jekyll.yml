@@ -27,24 +27,19 @@ jobs:
         with:
           node-version: '20'
 
-      # Use lockfile for deterministic installs
+      # Deterministic npm install
       - name: Install dependencies
         run: npm ci
 
-      # Optional: update Browserslist data (warning only)
+      # Optional: Silence Browserslist warning
       - name: Update Browserslist DB
         run: npx update-browserslist-db@latest
 
-      # Build Tailwind (pinned v3 + explicit input/output)
+      # Build Tailwind via package.json script
       - name: Build Tailwind CSS
         run: npm run build:css
 
-
-      # If the step above ever fails with permissions, use this instead:
-      # - name: Build Tailwind (node direct)
-      #   run: node ./node_modules/tailwindcss/lib/cli.js -i ./docs/assets/css/style.css -o ./docs/assets/css/tailwind.css --minify
-
-      # Ruby/Jekyll for Pages
+      # Ruby/Jekyll for Pages (Gemfile is in ./docs)
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -52,11 +47,16 @@ jobs:
           bundler-cache: true
           cache-version: 0
 
-      - name: Setup Pages
+      - name: Bundle install (docs)
+        working-directory: ./docs
+        run: bundle install --path vendor/bundle
+
+      - name: Configure Pages
         uses: actions/configure-pages@v4
 
-      - name: Build with Jekyll
-        run: bundle exec jekyll build --source docs --destination _site
+      - name: Build with Jekyll (docs -> _site)
+        working-directory: ./docs
+        run: bundle exec jekyll build --destination ../_site
         env:
           JEKYLL_ENV: production
 
