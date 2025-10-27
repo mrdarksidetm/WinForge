@@ -1,4 +1,23 @@
-# WinForge
+<div align="center">
+
+<table>
+  <tr>
+    <td>
+      <img src="https://raw.githubusercontent.com/mrdarksidetm/WinForge/main/docs/assets/images/icons/android-chrome-192x192.png" alt="WinForge Logo" width="128" />
+    </td>
+    <td>
+      <h1>WinForge</h1>
+    </td>
+  </tr>
+</table>
+
+<hr>
+
+
+<!-- Rest of your README content here, e.g., installation steps -->
+
+</div>
+
 The ultimate all-in-one guide for optimizing Windows 11. Integrate WinUtil debloating, MicroWin minimalism, WinHance enhancements, custom DNS, desktop tweaks, Edge removal, and Brave installation for a streamlined, privacy-focused setup
 
 > [!IMPORTANT]
@@ -36,10 +55,8 @@ And you're done. The script will ask you questions of what you wanna do?[^1]
 <br>
 
 ## Workings ⚙️
-If you wanna see the workings, either check the `Source Code` or [visit this page](.gitignore/working.md)
+If you wanna see the workings, either check the `Source Code` or [visit this page](docs\working.md)
 
-> [!IMPORTANT]
-> MORE UPDATES ARE COOMING SOON TO THE SCRIPT
 
 ## 💫 Credits
 * Chris Titus Tech- [WinUtil](https://github.com/ChrisTitusTech/winutil)
@@ -47,12 +64,27 @@ If you wanna see the workings, either check the `Source Code` or [visit this pag
 * Cloudflare - [Cloudflare DNS](https://developers.cloudflare.com/1.1.1.1/setup/)
 * Adguard - [Adguard DNS](https://adguard-dns.io/en/public-dns.html)
 
-## 💝 Sponsor
-I am not a developer but this is my second project that I tried to compiled for my community so we can create a difference for a better future.
-<br>
+## ☕ Sponsor the Forge
+If this sparked joy (or saved your sanity), fuel the fire!
 
-### Support me by:-
+<div align="center">
 
-<a href="https://www.buymeacoffee.com/mrdarksidetm" target="_blank"><img width="200" height="500" alt="white-button" src="https://github.com/user-attachments/assets/ef4ad070-523a-4bbf-9d46-7f6116b781e2" /></a>
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/H2H21N0OAT)
-<a href="https://www.upi.me/pay?pa=abhisidetm@ptyes&am=150" target="_blank"><img width="100" height="700" alt="upi" src="https://github.com/user-attachments/assets/e54d926f-68e5-4d9f-8801-5c1499f7d3d5" /></a>
+<table>
+  <tr>
+    <td>
+      <a href="https://www.buymeacoffee.com/mrdarksidetm" target="_blank"><img src="docs/assets\images\support\Buymecoffe-Square.png" alt="Buy Me a Coffee" height="50"></a>
+    </td>
+    <td>
+      <a href="https://ko-fi.com/H2H21N0OAT" target="_blank"><img src="docs/assets\images\support\Kofi-Square.png" alt="Ko-fi" height="50">
+</a>
+    </td>
+    <td>
+      <a href="https://www.upi.me/pay?pa=abhisidetm@ptyes&am=150" target="_blank"><img src="docs/assets\images\support\gpay.png" alt="Ko-fi" height="50"></a>
+    </td>
+  </tr>
+</table>
+</div>
+
+**🌟 Future Tease:** Signed EXE wrapper incoming—stay tuned via Releases. Questions? Open an Issue. Let's build better Windows, one forge at a time.
+
+</div>
