@@ -1,0 +1,8 @@
+# docs/Gemfile
+source "https://rubygems.org"
+
+# Use GitHub Pages’ approved Jekyll stack
+gem "github-pages", group: :jekyll_plugins
+
+# Optional: allowed plugin commonly used on Pages
+gem "jekyll-feed", group: :jekyll_plugins
