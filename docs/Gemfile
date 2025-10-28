@@ -3,14 +3,17 @@ source "https://rubygems.org"
 gem "jekyll", "~> 4.3.0"
 gem "webrick", "~> 1.8"
 
-# Remote theme and SEO support
+# Remote theme and SEO
 gem "jekyll-remote-theme"
 gem "jekyll-seo-tag"
 
 # Pagination v2
 gem "jekyll-paginate-v2", "~> 3.0"
 
-# Markdown processing
+# SassC for indented SASS (.sass) with tabs/spaces mix (fixes indentation error)
+gem "sassc", "~> 2.4.0"
+
+# Markdown
 gem "kramdown-parser-gfm"
 gem "rouge"
 
@@ -18,15 +21,14 @@ group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
   gem "jekyll-sitemap", "~> 1.4"
   gem "jekyll-redirect-from"
-  gem "jekyll-seo-tag"  # Enables {% seo %} in layouts
+  gem "jekyll-seo-tag"
 end
 
-# Windows/JRuby compatibility
+# Compatibility
 platforms :mingw, :x64_mingw, :mswin, :jruby do
   gem "tzinfo", "~> 1.2"
   gem "tzinfo-data"
   gem "wdm", "~> 0.1.1"
 end
 
-# Lock for JRuby
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]

@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Home
-pagination: enabled: true  # Enables v2 pagination on homepage
 ---
 
 <div align="center">
@@ -46,7 +45,23 @@ For detailed guide, see [Installation Guide](/guide/).
   </article>
 {% endfor %}
 
-{% include pagination.html %}  <!-- Indigo pagination links -->
+{% if paginator.total_pages > 1 %}
+  <div class="pagination">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="previous">Previous</a>
+    {% endif %}
+    {% for page in (1..paginator.total_pages) %}
+      {% if page == paginator.page %}
+        <span class="current">{{ page }}</span>
+      {% else %}
+        <a href="{{ site.baseurl }}/page{{ page }}">{{ page }}</a>
+      {% endif %}
+    {% endfor %}
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="next">Next</a>
+    {% endif %}
+  </div>
+{% endif %}
 
 ### Support me by:-
 <div align="center">
