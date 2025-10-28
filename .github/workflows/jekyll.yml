@@ -1,4 +1,4 @@
-name: Deploy Jekyll with Tailwind
+name: Deploy Jekyll with Indigo
 
 on:
   push:
@@ -21,25 +21,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Node for Tailwind build
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      # Deterministic npm install
-      - name: Install dependencies
-        run: npm ci
-
-      # Optional: Silence Browserslist warning
-      - name: Update Browserslist DB
-        run: npx update-browserslist-db@latest
-
-      # Build Tailwind via package.json script
-      - name: Build Tailwind CSS
-        run: npm run build:css
-
-      # Ruby/Jekyll for Pages (Gemfile is in ./docs)
+      # Ruby/Jekyll for Indigo theme (Gemfile in ./docs)
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
