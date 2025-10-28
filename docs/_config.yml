@@ -1,29 +1,92 @@
-# Basic Site settings
+# Site settings
 title: WinForge
-description: The ultimate Windows 11 optimization toolkit.
+tagline: The ultimate Windows 11 optimization toolkit
+email: ajukr99901@gmail.com
+description: >
+  WinForge is a PowerShell script for debloating, customizing, and optimizing Windows 11 for performance and privacy.
+baseurl: ""
 url: "https://mrdarksidetm.github.io"
-baseurl: ""  # For /docs source
+paginate: null  # Disabled legacy; use v2 below
 
 # Build settings
 markdown: kramdown
-permalink: pretty
-excerpt_separator: <!-- more -->
+permalink: /:title/
+excerpt_separator: ""
+lsi: false
+paginate_path: null  # Disabled legacy
 
-# Plugins (matches Gemfile)
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-paginate-v2
+  - jekyll-remote-theme  # For Indigo
 
-# Indigo Theme (remote)
+# Theme
 remote_theme: sergiokopplin/indigo
-paginate: 5
-paginate_path: /page:num/
 
-# Exclude (prevents upload issues)
+# Indigo & Pagination v2 settings (fixes error)
+paginate_with_outlinks_to:
+  enabled: true
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Pagination v2 (replaces legacy paginate: 5)
+pagination:
+  enabled: true
+  collection: 'posts'
+  sort_field: 'date'
+  sort_reverse: true
+  per_page: 5
+  permalink: '/page/:num/'
+  extension: none
+  indexpage: 'index.md'  # Or index.html
+  title: ':title - page :num of :max'
+
+# Author settings (for Indigo sidebar/footer)
+author:
+  name: Abhijeet Yadav
+  url: https://github.com/mrdarksidetm
+  email: ajukr99901@gmail.com
+  picture: /assets/images/profile.jpg  # Add your photo to docs/assets/images/
+  twitter: mrdarksidetm  # Optional
+  github: mrdarksidetm
+
+# Exclude from processing (clean build, no upload bloat)
 exclude:
-  - .gitignore
   - Gemfile
   - Gemfile.lock
   - node_modules
-  - vendor/
+  - vendor/bundle/
+  - vendor/cache/
+  - _tools
+  - .gitignore
+  - .editorconfig
+  - .travis.yml
+  - .gitignore
+
+# Collections (if using custom, e.g., projects for WinForge releases)
+collections:
+  projects:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults (for new posts/pages)
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
+      social-share: true
+      author_profile: true
+      read_time: true
+  -
+    scope:
+      path: ""
+    values:
+      layout: "page"
+      comments: true
+      social-share: true
+      author_profile: true
