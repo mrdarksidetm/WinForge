@@ -1,7 +1,9 @@
 ---
-layout: default
+layout: post  # Or 'default' if Indigo has it
 title: WinForge – Windows Optimization Toolkit
-description: 🚀 Streamline Windows 11: Debloat with WinUtil, enhance via WinHance, tune DNS, remove Edge safely, and theme your terminal. Privacy-first, one-click magic.
+description: 🚀 Streamline Windows 11, Debloat with WinUtil, enhance via WinHance, tune DNS, remove Edge safely, and theme your terminal. Privacy-first, one-click magic.
+permalink: /
+paginate: true
 ---
 
 # 🌟 WinForge: Forge Your Windows, Effortlessly
@@ -102,7 +104,7 @@ If this sparked joy (or saved your sanity), fuel the fire!
 </a>
     </td>
     <td>
-      <a href="https://www.upi.me/pay?pa=abhisidetm@ptyes&am=150" target="_blank"><img src="assets\images\support\gpay.png" alt="Ko-fi" height="50"></a>
+      <a href="https://www.upi.me/pay?pa=abhisidetm@ptyes&am=150" target="_blank"><img src="assets\images\support\Gpay.png" alt="Ko-fi" height="50"></a>
     </td>
   </tr>
 </table>

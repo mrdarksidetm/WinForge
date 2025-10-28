@@ -55,7 +55,7 @@ And you're done. The script will ask you questions of what you wanna do?[^1]
 <br>
 
 ## Workings ⚙️
-If you wanna see the workings, either check the `Source Code` or [visit this page](docs\working.md)
+If you wanna see the workings, either check the `Source Code` or [visit this page](docs/working.md)
 
 
 ## 💫 Credits
@@ -79,12 +79,10 @@ If this sparked joy (or saved your sanity), fuel the fire!
 </a>
     </td>
     <td>
-      <a href="https://www.upi.me/pay?pa=abhisidetm@ptyes&am=150" target="_blank"><img src="docs/assets\images\support\gpay.png" alt="Ko-fi" height="50"></a>
+      <a href="https://www.upi.me/pay?pa=abhisidetm@ptyes&am=150" target="_blank"><img src="docs/assets\images\support\Gpay.png" alt="Gpay" height="50"></a>
     </td>
   </tr>
 </table>
 </div>
 
 **🌟 Future Tease:** Signed EXE wrapper incoming—stay tuned via Releases. Questions? Open an Issue. Let's build better Windows, one forge at a time.
-
-</div>
