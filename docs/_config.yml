@@ -1,33 +1,29 @@
+# Basic Site settings
 title: WinForge
-description: The ultimate Windows 11 optimization toolkit – debloat, enhance, and customize with one command
-theme: jekyll-theme-cayman
+description: The ultimate Windows 11 optimization toolkit.
 url: "https://mrdarksidetm.github.io"
-baseurl: "/WinForge"
-repository: mrdarksidetm/WinForge
+baseurl: ""  # For /docs source
 
-# Feature toggles
-show_downloads: true
-enable_copy_buttons: true
+# Build settings
+markdown: kramdown
+permalink: pretty
+excerpt_separator: <!-- more -->
 
-# Optional: Google Analytics
-# google_analytics: G-XXXXXXXXXX
-
-# Plugins
+# Plugins (matches Gemfile)
 plugins:
-  - jekyll-seo-tag
+  - jekyll-feed
   - jekyll-sitemap
+  - jekyll-paginate-v2
 
-# Collections (optional for future docs pages)
-collections:
-  docs:
-    output: true
-    permalink: /docs/:path/
+# Indigo Theme (remote)
+remote_theme: sergiokopplin/indigo
+paginate: 5
+paginate_path: /page:num/
 
-# Exclude from build
+# Exclude (prevents upload issues)
 exclude:
-  - node_modules/
-  - package.json
-  - tailwind.config.js
+  - .gitignore
   - Gemfile
   - Gemfile.lock
+  - node_modules
   - vendor/
