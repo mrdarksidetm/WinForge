@@ -3,13 +3,14 @@ source "https://rubygems.org"
 gem "jekyll", "~> 4.3.0"
 gem "webrick", "~> 1.8"
 
-# Remote theme support
+# Remote theme and SEO support
 gem "jekyll-remote-theme"
+gem "jekyll-seo-tag"
 
-# Pagination v2 (fixes legacy error)
+# Pagination v2
 gem "jekyll-paginate-v2", "~> 3.0"
 
-# Markdown & syntax highlighting
+# Markdown processing
 gem "kramdown-parser-gfm"
 gem "rouge"
 
@@ -17,17 +18,15 @@ group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
   gem "jekyll-sitemap", "~> 1.4"
   gem "jekyll-redirect-from"
+  gem "jekyll-seo-tag"  # Enables {% seo %} in layouts
 end
 
-# Windows and JRuby does not include zoneinfo-data
+# Windows/JRuby compatibility
 platforms :mingw, :x64_mingw, :mswin, :jruby do
   gem "tzinfo", "~> 1.2"
   gem "tzinfo-data"
+  gem "wdm", "~> 0.1.1"
 end
 
-# Performance-booster for watching directories on Windows
-gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
-
-# Lock `http_parser.rb` gem to `v0.6.x` on JRuby builds since newer versions of the gem
-# do not have a Java counterpart.
+# Lock for JRuby
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]

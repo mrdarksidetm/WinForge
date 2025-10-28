@@ -1,36 +1,38 @@
 # Site settings
 title: WinForge
-tagline: The ultimate Windows 11 optimization toolkit
-email: ajukr99901@gmail.com
+tagline: Windows 11 Optimization Toolkit
+email: mrdarksidetm@example.com  # Update with yours
 description: >
-  WinForge is a PowerShell script for debloating, customizing, and optimizing Windows 11 for performance and privacy.
+  The ultimate PowerShell script for debloating, customizing, and optimizing Windows 11 for performance, privacy, and minimalism.
 baseurl: ""
 url: "https://mrdarksidetm.github.io"
-paginate: null  # Disabled legacy; use v2 below
 
 # Build settings
 markdown: kramdown
 permalink: /:title/
 excerpt_separator: ""
 lsi: false
-paginate_path: null  # Disabled legacy
 
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-remote-theme  # For Indigo
+  - jekyll-remote-theme
+  - jekyll-paginate-v2
+  - jekyll-seo-tag  # Fixes {% seo %} tag error
 
 # Theme
 remote_theme: sergiokopplin/indigo
 
-# Indigo & Pagination v2 settings (fixes error)
-paginate_with_outlinks_to:
-  enabled: true
-sass:
-  sass_dir: _sass
-  style: compressed
+# Author (for SEO, sidebar, footer)
+author:
+  name: MrDarksideTM
+  url: https://github.com/mrdarksidetm
+  email: mrdarksidetm@example.com  # Update
+  picture: /assets/images/profile.jpg  # Optional: add photo
+  twitter: mrdarksidetm  # Optional
+  github: mrdarksidetm
 
-# Pagination v2 (replaces legacy paginate: 5)
+# Pagination v2 (for posts on homepage)
 pagination:
   enabled: true
   collection: 'posts'
@@ -39,54 +41,38 @@ pagination:
   per_page: 5
   permalink: '/page/:num/'
   extension: none
-  indexpage: 'index.md'  # Or index.html
+  indexpage: 'index.html'  # Or .md
   title: ':title - page :num of :max'
 
-# Author settings (for Indigo sidebar/footer)
-author:
-  name: Abhijeet Yadav
-  url: https://github.com/mrdarksidetm
-  email: ajukr99901@gmail.com
-  picture: /assets/images/profile.jpg  # Add your photo to docs/assets/images/
-  twitter: mrdarksidetm  # Optional
-  github: mrdarksidetm
-
-# Exclude from processing (clean build, no upload bloat)
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor/bundle/
-  - vendor/cache/
-  - _tools
-  - .gitignore
-  - .editorconfig
-  - .travis.yml
-  - .gitignore
-
-# Collections (if using custom, e.g., projects for WinForge releases)
-collections:
-  projects:
-    output: true
-    permalink: /:collection/:name/
-
-# Defaults (for new posts/pages)
+# SEO defaults (jekyll-seo-tag uses these)
 defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "page"
   -
     scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
-      comments: true
-      social-share: true
-      author_profile: true
-      read_time: true
-  -
-    scope:
-      path: ""
-    values:
-      layout: "page"
-      comments: true
-      social-share: true
-      author_profile: true
+      comments: false
+      social-share: false
+      author_profile: false
+      read_time: false
+
+# Collections (for projects/releases if needed)
+collections:
+  projects:
+    output: true
+    permalink: /:collection/:name/
+
+# Exclude (prevents bloat in _site)
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/
+  - .gitignore
+  - .editorconfig
