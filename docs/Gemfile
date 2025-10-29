@@ -1,34 +1,19 @@
 source "https://rubygems.org"
 
 gem "jekyll", "~> 4.3.0"
-gem "webrick", "~> 1.8"
-
-# Remote theme and SEO
-gem "jekyll-remote-theme"
-gem "jekyll-seo-tag"
-
-# Pagination v2
-gem "jekyll-paginate-v2", "~> 3.0"
-
-# SassC for indented SASS (.sass) with tabs/spaces mix (fixes indentation error)
-gem "sassc", "~> 2.4.0"
-
-# Markdown
-gem "kramdown-parser-gfm"
-gem "rouge"
+gem "jekyll-sass-converter", "~> 3.1.0"
 
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
+  gem "jekyll-paginate-v2", github: "sverrirs/jekyll-paginate-v2"
   gem "jekyll-sitemap", "~> 1.4"
-  gem "jekyll-redirect-from"
-  gem "jekyll-seo-tag"
+  gem "jekyll-seo-tag", "~> 2.8"
 end
 
-# Compatibility
-platforms :mingw, :x64_mingw, :mswin, :jruby do
-  gem "tzinfo", "~> 1.2"
-  gem "tzinfo-data"
-  gem "wdm", "~> 0.1.1"
-end
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
+# Windows file watcher for faster auto-regen (avoids polling)
+platforms :mingw, :mswin, :x64_mingw, :jruby do
+  gem "wdm", ">= 0.1.0"
+end
