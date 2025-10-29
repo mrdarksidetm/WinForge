@@ -1,0 +1,58 @@
+# WinForge Jekyll Config for GH Pages
+title: WinForge
+description: A Windows 11 optimization tool with debloating, minimalism, and enhancements via PowerShell script.
+baseurl: ""
+url: "https://mrdarksidetm.github.io"
+permalink: /:title/
+
+remote_theme: sergiokopplin/indigo
+
+# Pagination for homepage/posts (jekyll-paginate-v2 only)
+pagination:
+  enabled: true
+  per_page: 5
+
+# Sass settings (fixes Indigo .sass with sassc compiler)
+sass:
+  compiler: sassc
+  sass_dir: _sass
+  style: compressed
+
+# Plugins (GH Pages compatible)
+plugins:
+  - jekyll-paginate-v2
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+
+# SEO and feed settings
+seo:
+  enabled: true
+feed:
+  posts_limit: 10
+
+# Exclude from _site build
+exclude:
+  - vendor/bundle/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - .git/
+  - .gitignore
+  - README.md
+  - _posts  # Skip Indigo sample posts (add custom later)
+# Defaults for posts and pages
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
+  -
+    scope:
+      path: ""
+    values:
+      layout: "page"

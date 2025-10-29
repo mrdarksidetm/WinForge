@@ -90,8 +90,8 @@ The script is designed to minimize user interaction while maximizing customizati
 
 ## 📝 Footnotes
 
-[^1]: WebView2 Runtime automatically checks and downloads the latest correct version
+WebView2 Runtime automatically checks and downloads the latest correct version
 
 ---
 
-**[← Back to Home]({{github.com/mrdarksidetm/winforge}}/)**
+**[← Back to Home](github.com/mrdarksidetm/winforge)**

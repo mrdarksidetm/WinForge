@@ -1,78 +1,36 @@
 # Site settings
 title: WinForge
-tagline: Windows 11 Optimization Toolkit
-email: mrdarksidetm@example.com  # Update with yours
-description: >
-  The ultimate PowerShell script for debloating, customizing, and optimizing Windows 11 for performance, privacy, and minimalism.
-baseurl: ""
+description: Windows 11 Optimization Tool
 url: "https://mrdarksidetm.github.io"
+baseurl: "/WinForge"
 
-# Build settings
-markdown: kramdown
-permalink: /:title/
-excerpt_separator: ""
-lsi: false
-
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-remote-theme
-  - jekyll-paginate-v2
-  - jekyll-seo-tag  # Fixes {% seo %} tag error
-
-# Theme
+# Theme (remote GitHub repo)
 remote_theme: sergiokopplin/indigo
 
-# Author (for SEO, sidebar, footer)
-author:
-  name: MrDarksideTM
-  url: https://github.com/mrdarksidetm
-  email: mrdarksidetm@example.com  # Update
-  picture: /assets/images/profile.jpg  # Optional: add photo
-  twitter: mrdarksidetm  # Optional
-  github: mrdarksidetm
+# Build settings
+plugins:
+  - jekyll-feed
+  - jekyll-paginate-v2
+  - jekyll-sitemap
+  - jekyll-seo-tag
 
-# Pagination v2 (for posts on homepage)
+# Pagination (v3.0+ compat)
 pagination:
   enabled: true
-  collection: 'posts'
-  sort_field: 'date'
-  sort_reverse: true
   per_page: 5
-  permalink: '/page/:num/'
-  extension: none
-  indexpage: 'index.html'  # Or .md
-  title: ':title - page :num of :max'
+  permalink: "/page/:num/"
+  title: " - Page :num"  # Replaces deprecated title_suffix
 
-# SEO defaults (jekyll-seo-tag uses these)
-defaults:
-  -
-    scope:
-      path: ""
-    values:
-      layout: "page"
-  -
-    scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-      comments: false
-      social-share: false
-      author_profile: false
-      read_time: false
+# Sass config to suppress deprecations (via jekyll-sass-converter)
+sass:
+  style: compressed
+  quiet_deps: true
+  silence_deprecations: ['import']
+  incremental: true
 
-# Collections (for projects/releases if needed)
-collections:
-  projects:
-    output: true
-    permalink: /:collection/:name/
-
-# Exclude (prevents bloat in _site)
+# Exclude from processing
 exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
-  - vendor/
-  - .gitignore
-  - .editorconfig
+  - vendor
