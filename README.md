@@ -1,21 +1,6 @@
 <div align="center">
-
-<table>
-  <tr>
-    <td>
-      <img src="https://raw.githubusercontent.com/mrdarksidetm/WinForge/main/docs/assets/images/icons/android-chrome-192x192.png" alt="WinForge Logo" width="128" />
-    </td>
-    <td>
-      <h1>WinForge</h1>
-    </td>
-  </tr>
-</table>
-
-<hr>
-
-
-<!-- Rest of your README content here, e.g., installation steps -->
-
+<img src="docs/assets/images/icons/android-chrome-192x192.png" alt="WinForge Logo" width="192" />
+<h1>WinForge</h1>
 </div>
 
 The ultimate all-in-one guide for optimizing Windows 11. Integrate WinUtil debloating, MicroWin minimalism, WinHance enhancements, custom DNS, desktop tweaks, Edge removal, and Brave installation for a streamlined, privacy-focused setup
@@ -54,9 +39,30 @@ And you're done. The script will ask you questions of what you wanna do?[^1]
 
 <br>
 
-## Workings ⚙️
-If you wanna see the workings, either check the `Source Code` or [visit this page](docs/working.md)
+## 📲 Import Configrations and Files
+### For Chris Titus Utility
+<img src="assets\images\ChrisTitus-Import.png" alt="Import Chris" />
 
+1. Let this screen be opened.
+2. Click on the Gear (Settings icon) at the top right corner as illustrated in the [image](assets\images\ChrisTitus-Import.png)
+3. A menu will open to **Import** the configuration
+4. Go to `Install` section and select the apps you wanna install
+5. `Tweaks`section is the best & highly configured and if you don't know what every thing is saying, just click **Run Tweaks** at the bootom left side
+
+> [!NOTICE]
+> If you have downloaded the zip format then it has the pre configured import files for both Chris Titus Utility and Winhance
+
+### For Winhance
+<img src="assets\images\Winhance-import.png" alt="Import Chris" />
+
+1. Let this screen be opened,
+2. Click on the **Folder** like icon in upper right corner as illustrated in the [image](assets\images\Winhance-import.png)
+3. then Import the configrations
+
+Enjoy 🎉
+
+## ⚙️ Workings 
+If you wanna see the workings, either check the `Source Code` or [visit this page](docs/working.md)
 
 ## 💫 Credits
 * Chris Titus Tech- [WinUtil](https://github.com/ChrisTitusTech/winutil)
@@ -84,5 +90,6 @@ If this sparked joy (or saved your sanity), fuel the fire!
   </tr>
 </table>
 </div>
+<br>
 
 **🌟 Future Tease:** Signed EXE wrapper incoming—stay tuned via Releases. Questions? Open an Issue. Let's build better Windows, one forge at a time.
