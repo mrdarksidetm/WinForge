@@ -4,15 +4,16 @@ title: How WinForge Works
 description: Detailed step-by-step explanation of what the WinForge script does
 ---
 
-# ⚙️ How WinForge Works
+# ⚙️ WinForge Detailed Features
 
-The script is designed to minimize user interaction while maximizing customization. It provides interactive prompts for each optional step and includes custom import files for GUI programs to streamline setup.
+The script is designed to respect user interaction while maximizing customization. It provides interactive prompts for each optional step and includes custom import files for GUI programs to streamline setup.
 
-> **⚠️ Warning:** This script offers to uninstall Microsoft Edge via the Winhance Tool. If you don't want Edge removed, deselect the option in the Winhance screen.
+> [!WARNING]
+> This script offers to uninstall Microsoft Edge via the Winhance Tool. If you don't want Edge removed, deselect the option in the Winhance screen.
 
 ---
 
-## 📋 Steps Performed (In Order)
+# 📋 Steps Performed (In Order)
 
 ### 1. Administrator Elevation & Logging Setup
 - Checks if running as Administrator
@@ -65,28 +66,77 @@ The script is designed to minimize user interaction while maximizing customizati
 - Stops transcript logging
 - Provides both GUI popup and console output
 
----
 
-## 🔧 Technical Details
+# 🔥Forge Handler
+A very detailed to display everything the script requires and how its performs on your system. This is for nerds who wanna know every feature of that simple script.
+### Installation & Compatibility
+* **💻 Windows 11 Optimized:** Specifically designed and tested for Windows 11 (22H2+) with full native API support and latest feature compatibility​
 
-### Error Handling
-- All steps wrapped in try-catch blocks
-- Errors collected in ArrayList for final report
-- Non-fatal errors don't stop execution
-- Full error messages logged to file
+* **🏗️ Universal Architecture:** Compatible with both x64 (recommended) and x86 Windows 11 installations without code modifications​
 
-### Network Adapter Detection
-- Targets adapters with status "Up"
-- Filters for Wi-Fi, WLAN, Wireless, or Ethernet in adapter name
-- Applies DNS settings to all matching adapters
-- Skips disconnected or disabled adapters
+* **🔵 PowerShell 7+ Required:** Latest PowerShell 7.x (Core) with enhanced security features, better performance, and cross-platform capabilities​
 
-### Execution Policy Handling
-- Script auto-elevates without permanently changing execution policy
-- Uses `-ExecutionPolicy Bypass` only for this session
-- No system-wide security changes
+* **👨‍💼 Administrator Required:** Automatic elevation to Administrator privileges with UAC prompts for system modifications (transparent, non-blocking)​
 
----
+* **🎯 Interactive CLI Interface:** User-friendly prompts (Yes/No questions) with default options for hands-off automation or manual control​
+
+* **🖱️ GUI Dialog Boxes:** Information boxes for important notifications and configuration steps (uses Windows Forms for accessibility)​
+
+### Security Features
+* **🔒 TLS 1.2+ Enforcement:** All downloads use encrypted HTTPS connections with certificate validation to prevent man-in-the-middle attacks​
+
+* **🚨 Error Handling & Recovery:** Comprehensive try-catch error handling for every critical operation with graceful failure modes and detailed error reporting​
+
+* **📋 Structured Error Objects:** Detailed error logs with exception type, HResult code, stack traces, and inner exception messages for diagnostics​
+
+* **✅ Success Tracking:** Detailed logging of all successful operations for compliance auditing and troubleshooting verification​
+
+* **🔄 Atomic Transactions:** DNS and network operations are applied per-adapter with individual error handling to prevent partial failures​
+
+* **🛡️ Execution Policy Respect:** Script respects Windows Execution Policies and recommends RemoteSigned policy for safe execution​
+
+### Advanced Features
+* **🎯 Selective Module Installation:** Choose which components to install (debloat, Edge removal, DNS, terminal) - not all-or-nothing approach​
+
+* **⏱️ Timeout Support:** Read-YesNo function supports optional timeouts for automated/headless deployments with configurable defaults​
+
+* **🔍 Multi-Choice Selection:** Read-Choice function for selecting between profiles (AdGuard vs Cloudflare) with fuzzy matching (accepts 'A' for Adblock)​
+
+* **🌐 Network Adapter Detection:** Automatic detection and enumeration of active physical network adapters (Ethernet, Wi-Fi, WLAN) with exclusion of virtual adapters​
+
+* **📡 DNS Cache Flushing:** Automatic DNS cache clear after configuration changes for immediate effect on name resolution​
+
+* **🔗 IPv6 Compatibility:** Full IPv6 address support (dual IPv4/IPv6 DNS) for modern networks with fallback to IPv4-only if needed​
+
+* **📝 Configuration Import:** Chris Titus WinUtil configuration file (JSON) auto-import with folder navigation for easy preset loading​
+
+* **🔗 GitHub Release Integration:** Automatic download of latest releases from GitHub repositories (ChrisTitusTech, Winhance, Microsoft) ensuring up-to-date tools​
+
+### Code Quality & Standards
+* **✨ PSScriptAnalyzer Compliant:** Enterprise-grade code meeting all Microsoft PowerShell best practices and security standards (0 errors)​
+
+* **📦 Modular Functions:** Each feature (DNS, WebView2, terminal, logging) is a separate function for maintainability, testing, and reusability​
+
+* **🎓 Documentation:** Inline comments and function help for easy understanding and modification by other developers​
+
+* **🔄 SemVer Versioning:** Semantic versioning (2.1.4) for tracking fixes, features, and breaking changes​
+
+* **🛠️ PS2EXE Compatible:** Can be compiled to standalone .EXE with PS2EXE-GUI for distribution without PowerShell runtime dependency​
+
+* **⚙️ CmdletBinding Support:** Uses PowerShell's [CmdletBinding()] for consistent behavior with built-in cmdlets and pipeline compatibility​
+
+### Deployment & Support
+* **📦 Single File Deployment:** Entire setup as one .ps1 file - easy to copy, share, and version control (no dependencies)​
+
+* **🌐 GitHub Repository:** Open-source on GitHub (mrdarksidetm/WinForge) with issue tracking, releases, and community contributions​
+
+* **📊 GitHub Pages Documentation:** Live site at https://mrdarksidetm.github.io/WinForge/ with guides, FAQs, and update notes​
+
+* **💬 Community Support:** Open issues for bug reports and feature requests with responsive maintenance and updates​
+
+* **🚀 Continuous Deployment:** GitHub Actions auto-deploys documentation and releases with zero-downtime updates​
+
+
 
 ## 📝 Footnotes
 
@@ -94,4 +144,4 @@ WebView2 Runtime automatically checks and downloads the latest correct version
 
 ---
 
-**[← Back to Home](github.com/mrdarksidetm/winforge)**
+**[← Back to Home](github.com/mrdarksidetm/WinForge)**

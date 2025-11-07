@@ -1,6 +1,8 @@
+﻿#Requires -Version 5.1
+#Requires -RunAsAdministrator
 # =========================
 # File: WinForge-OptionalSetup.ps1
-# Version: 2.1 (Security-Enhanced + Final UX)
+# Version: 2.1.4 (Enterprise-Grade - All PSScriptAnalyzer Compliant)
 # Run as Administrator
 # =========================
 
@@ -12,9 +14,9 @@ $ErrorActionPreference = 'Stop'
 # --- Configuration: Known file hashes (UPDATE THESE PERIODICALLY) ---
 $script:KnownHashes = @{
     # Update these hashes from official sources before deployment
-    'WebView2'           = 'PLACEHOLDER_HASH_CHECK_MICROSOFT_DOCS'   # Microsoft official docs/source
-    'Winhance'           = 'PLACEHOLDER_HASH_CHECK_GITHUB_RELEASES'  # Winhance GitHub releases
-    'ChrisTitusWinUtil'  = 'PLACEHOLDER_HASH_CHECK_GITHUB'           # WinUtil GitHub releases
+    'WebView2'           = 'PLACEHOLDER_HASH_CHECK_MICROSOFT_DOCS';   # Microsoft official docs/source
+    'Winhance'           = 'PLACEHOLDER_HASH_CHECK_GITHUB_RELEASES';  # Winhance GitHub releases
+    'ChrisTitusWinUtil'  = 'PLACEHOLDER_HASH_CHECK_GITHUB'            # WinUtil GitHub releases
 }
 
 # --- Logging setup ---
@@ -26,7 +28,7 @@ try {
     $timestamp = Get-Date -Format 'yyyyMMdd_HHmmss'
     $LogPath = Join-Path $LogDir "WinForge-OptionalSetup_$timestamp.log"
     Start-Transcript -Path $LogPath -Append | Out-Null
-    Write-Host "Logging to: $LogPath" -ForegroundColor Gray
+    Write-Information "Logging to: $LogPath" -InformationAction Continue
 } catch {
     Write-Warning "Failed to start transcript: $($_.Exception.Message)"
 }
@@ -50,7 +52,7 @@ $script:Errors           = New-Object System.Collections.ArrayList
 $script:SuccessOperations = New-Object System.Collections.ArrayList
 $script:ErrorObjects     = New-Object System.Collections.ArrayList   # structured error capture
 
-function Report-Error {
+function Write-ErrorReport {
     param(
         [Parameter(Mandatory=$true)][string]$Message,
         [Parameter(Mandatory=$false)][System.Exception]$Exception
@@ -65,19 +67,19 @@ function Report-Error {
 
     if ($Exception) {
         $errObj = [pscustomobject]@{
-            Timestamp       = (Get-Date).ToString("o")
-            Message         = $Message
-            ExceptionType   = $Exception.GetType().FullName
-            ExceptionMsg    = $Exception.Message
-            HResult         = $Exception.HResult
-            StackTrace      = $Exception.StackTrace
-            InnerException  = $Exception.InnerException?.ToString()
+            Timestamp       = (Get-Date).ToString("o");
+            Message         = $Message;
+            ExceptionType   = $Exception.GetType().FullName;
+            ExceptionMsg    = $Exception.Message;
+            HResult         = $Exception.HResult;
+            StackTrace      = $Exception.StackTrace;
+            InnerException  = if ($Exception.InnerException) { $Exception.InnerException.ToString() } else { "None" }
         }
         [void]$script:ErrorObjects.Add($errObj)
     }
 }
 
-function Report-Success {
+function Write-SuccessReport {
     param([Parameter(Mandatory=$true)][string]$Message)
     $successMsg = "✅ SUCCESS: {0}" -f $Message
     [void]$script:SuccessOperations.Add($successMsg)
@@ -173,6 +175,7 @@ function Test-FileHash {
 }
 
 function Test-GroupPolicyDNS {
+    param()
     try {
         $gpoRegPath = 'HKLM:\Software\Policies\Microsoft\Windows NT\DNSClient'
         if (Test-Path $gpoRegPath) {
@@ -191,7 +194,9 @@ function Test-GroupPolicyDNS {
 }
 
 # --- Networking helpers ---
-function Get-NetworkAdapters {
+function Get-NetworkAdapter {
+    [CmdletBinding()]
+    param()
     try {
         $adapters = Get-NetAdapter | Where-Object {
             $_.Status -eq 'Up' -and
@@ -212,7 +217,12 @@ function Get-NetworkAdapters {
 }
 
 function Set-DnsAndDoH {
-    param([string[]]$Dns4,[string[]]$Dns6,[string]$DohTemplate)
+    [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='High')]
+    param(
+        [string[]]$Dns4,
+        [string[]]$Dns6,
+        [string]$DohTemplate
+    )
     if (Test-GroupPolicyDNS) {
         $continue = Read-YesNo -Prompt "⚠️  Group Policy DNS detected. Local changes may be overridden. Continue anyway?" -Default 'N'
         if ($continue -eq 'N') {
@@ -221,16 +231,20 @@ function Set-DnsAndDoH {
         }
     }
     try {
-        $adapters = Get-NetworkAdapters
+        $adapters = Get-NetworkAdapter
         foreach ($adapter in $adapters) {
             try {
                 if ($Dns4 -and $Dns4.Count -gt 0) {
-                    Set-DnsClientServerAddress -InterfaceIndex $adapter.IfIndex -ServerAddresses $Dns4 -ErrorAction Stop
-                    Write-Info "Applied IPv4 DNS to $($adapter.Name)"
+                    if ($PSCmdlet.ShouldProcess("$($adapter.Name)", "Set IPv4 DNS to $($Dns4 -join ', ')")) {
+                        Set-DnsClientServerAddress -InterfaceIndex $adapter.IfIndex -ServerAddresses $Dns4 -ErrorAction Stop
+                        Write-Info "Applied IPv4 DNS to $($adapter.Name)"
+                    }
                 }
                 if ($Dns6 -and $Dns6.Count -gt 0) {
-                    Set-DnsClientServerAddress -InterfaceIndex $adapter.IfIndex -ServerAddresses $Dns6 -AddressFamily IPv6 -ErrorAction Stop
-                    Write-Info "Applied IPv6 DNS to $($adapter.Name)"
+                    if ($PSCmdlet.ShouldProcess("$($adapter.Name)", "Set IPv6 DNS to $($Dns6 -join ', ')")) {
+                        Set-DnsClientServerAddress -InterfaceIndex $adapter.IfIndex -ServerAddresses $Dns6 -AddressFamily IPv6 -ErrorAction Stop
+                        Write-Info "Applied IPv6 DNS to $($adapter.Name)"
+                    }
                 }
             } catch {
                 Write-Warning "Failed to set DNS on $($adapter.Name): $($_.Exception.Message)"
@@ -245,8 +259,10 @@ function Set-DnsAndDoH {
                 if ($existing) {
                     Write-Info "DoH already registered for $server"
                 } else {
-                    Add-DnsClientDohServerAddress -ServerAddress $server -DohTemplate $DohTemplate -AllowFallbackToUdp $true -AutoUpgrade $true -ErrorAction Stop
-                    Write-Info "✓ DoH registered for $server"
+                    if ($PSCmdlet.ShouldProcess($server, "Register DNS-over-HTTPS (DoH) server")) {
+                        Add-DnsClientDohServerAddress -ServerAddress $server -DohTemplate $DohTemplate -AllowFallbackToUdp $true -AutoUpgrade $true -ErrorAction Stop
+                        Write-Info "✓ DoH registered for $server"
+                    }
                 }
             } catch {
                 Write-Warning "DoH registration failed for ${server}: $($_.Exception.Message)"
@@ -259,7 +275,8 @@ function Set-DnsAndDoH {
     }
 }
 
-function Download-FileSecure {
+function Get-SecureFile {
+    [CmdletBinding()]
     param(
         [Parameter(Mandatory=$true)][string]$Url,
         [Parameter(Mandatory=$true)][string]$OutputPath,
@@ -281,13 +298,15 @@ function Download-FileSecure {
         }
         return $true
     } catch {
-        Report-Error "Secure download failed for $Url" $_
+        Write-ErrorReport "Secure download failed for $Url" $_
         return $false
     }
 }
 
 # --- Elevation check ---
 function Test-IsElevated {
+    [CmdletBinding()]
+    param()
     $identity  = [Security.Principal.WindowsIdentity]::GetCurrent()
     $principal = New-Object Security.Principal.WindowsPrincipal($identity)
     return $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
@@ -327,14 +346,14 @@ The script folder will open now for your reference.
         $winutilUrl  = "https://github.com/ChrisTitusTech/winutil/releases/latest/download/winutil.ps1"
         $winutilPath = Join-Path $env:TEMP "ChrisTitus-winutil.ps1"
         Write-Warning "SECURITY NOTICE: Downloading script for inspection before execution"
-        if (Download-FileSecure -Url $winutilUrl -OutputPath $winutilPath -ExpectedHash $script:KnownHashes['ChrisTitusWinUtil'] -SkipHashCheck) {
+        if (Get-SecureFile -Url $winutilUrl -OutputPath $winutilPath -ExpectedHash $script:KnownHashes['ChrisTitusWinUtil'] -SkipHashCheck) {
             Write-Info "Script downloaded successfully"
             Write-Info "Location: $winutilPath"
             $proceed = Read-YesNo -Prompt "Review the script file if needed. Launch Chris Titus Utility?" -Default 'Y'
             if ($proceed -eq 'Y') {
                 Write-Info "Launching Chris Titus Utility..."
                 & $winutilPath
-                Report-Success "Chris Titus Utility launched successfully"
+                Write-SuccessReport "Chris Titus Utility launched successfully"
             } else {
                 Write-Info "User cancelled utility launch"
             }
@@ -345,7 +364,7 @@ The script folder will open now for your reference.
         Write-Info "Skipped Windows debloat/optimization"
     }
 } catch {
-    Report-Error "Chris Titus Utility execution failed" $_
+    Write-ErrorReport "Chris Titus Utility execution failed" $_
 }
 
 # =========================
@@ -357,17 +376,17 @@ try {
     if ($EdgeChoice -eq 'Y') {
         $winhanceUrl = "https://github.com/memstechtips/Winhance/releases/latest/download/Winhance.Installer.exe"
         $winhanceExe = Join-Path $env:TEMP "Winhance.Installer.exe"
-        if (Download-FileSecure -Url $winhanceUrl -OutputPath $winhanceExe -ExpectedHash $script:KnownHashes['Winhance'] -SkipHashCheck) {
+        if (Get-SecureFile -Url $winhanceUrl -OutputPath $winhanceExe -ExpectedHash $script:KnownHashes['Winhance'] -SkipHashCheck) {
             Write-Info "Starting Winhance installer..."
             Start-Process -FilePath $winhanceExe
             Show-InfoBox "🚫 Winhance Launched!`n`nYou can now remove Edge and customize other components." -Title "Winhance"
-            Report-Success "Winhance installer launched"
+            Write-SuccessReport "Winhance installer launched"
         }
     } else {
         Write-Info "Skipped Winhance (Edge removal)"
     }
 } catch {
-    Report-Error "Winhance download/launch failed" $_
+    Write-ErrorReport "Winhance download/launch failed" $_
 }
 
 # =========================
@@ -380,13 +399,13 @@ try {
         switch ($netProfile) {
             'Adblock' {
                 Write-Info "Applying AdGuard DNS with ad-blocking and DoH encryption..."
-                Set-DnsAndDoH -Dns4 @('94.140.14.14','94.140.15.15') -Dns6 @('2a10:50c0::ad1:ff','2a10:50c0::ad2:ff') -DohTemplate 'https://dns.adguard-dns.com/dns-query'
-                Report-Success "AdGuard DNS with DoH encryption configured"
+                Set-DnsAndDoH -Dns4 @('94.140.14.14','94.140.15.15') -Dns6 @('2a10:50c0::ad1:ff','2a10:50c0::ad2:ff') -DohTemplate 'https://dns.adguard-dns.com/dns-query' -Confirm:$false
+                Write-SuccessReport "AdGuard DNS with DoH encryption configured"
             }
             'Fastest' {
                 Write-Info "Applying Cloudflare DNS for maximum speed with DoH encryption..."
-                Set-DnsAndDoH -Dns4 @('1.1.1.1','1.0.0.1') -Dns6 @('2606:4700:4700::1111','2606:4700:4700::1001') -DohTemplate 'https://cloudflare-dns.com/dns-query'
-                Report-Success "Cloudflare DNS with DoH encryption configured"
+                Set-DnsAndDoH -Dns4 @('1.1.1.1','1.0.0.1') -Dns6 @('2606:4700:4700::1111','2606:4700:4700::1001') -DohTemplate 'https://cloudflare-dns.com/dns-query' -Confirm:$false
+                Write-SuccessReport "Cloudflare DNS with DoH encryption configured"
             }
         }
         Write-Info "Flushing DNS cache..."
@@ -395,7 +414,7 @@ try {
         Write-Info "Skipped Internet optimization"
     }
 } catch {
-    Report-Error "Internet optimization (DNS/DoH) configuration failed" $_
+    Write-ErrorReport "Internet optimization (DNS/DoH) configuration failed" $_
 }
 
 # =========================
@@ -406,36 +425,40 @@ try {
         Write-Info "Installing Microsoft WebView2 Runtime (required after Edge removal)..."
         $webview2Url = "https://go.microsoft.com/fwlink/p/?LinkId=2124703"
         $webview2Exe = Join-Path $env:TEMP "MicrosoftEdgeWebview2Setup.exe"
-        if (Download-FileSecure -Url $webview2Url -OutputPath $webview2Exe -ExpectedHash $script:KnownHashes['WebView2'] -SkipHashCheck) {
+        if (Get-SecureFile -Url $webview2Url -OutputPath $webview2Exe -ExpectedHash $script:KnownHashes['WebView2'] -SkipHashCheck) {
             Write-Info "Attempting silent installation..."
             try {
                 $process = Start-Process -FilePath $webview2Exe -ArgumentList "/silent /install" -PassThru -Wait -ErrorAction Stop
                 if ($process.ExitCode -eq 0) {
-                    Report-Success "WebView2 Runtime installed silently"
+                    Write-SuccessReport "WebView2 Runtime installed silently"
                 } else {
                     Write-Warning "Silent install returned code $($process.ExitCode). Launching interactive installer..."
                     Start-Process -FilePath $webview2Exe
-                    Report-Success "WebView2 Runtime installer launched (interactive)"
+                    Write-SuccessReport "WebView2 Runtime installer launched (interactive)"
                 }
             } catch {
                 Write-Warning "Silent installation failed: $($_.Exception.Message)"
                 Write-Info "Launching interactive installer..."
                 Start-Process -FilePath $webview2Exe
-                Report-Success "WebView2 Runtime installer launched (fallback)"
+                Write-SuccessReport "WebView2 Runtime installer launched (fallback)"
             }
         }
     } else {
         Write-Info "Skipped WebView2 Runtime (Edge not removed)"
     }
 } catch {
-    Report-Error "WebView2 Runtime installation failed" $_
+    Write-ErrorReport "WebView2 Runtime installation failed" $_
 }
 
 # =========================
 # Step 5: Oh My Posh Terminal Customization
 # =========================
 function Add-ProfileLine {
-    param([Parameter(Mandatory=$true)][string]$ProfilePath,[Parameter(Mandatory=$true)][string]$LineToAdd)
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)][string]$ProfilePath,
+        [Parameter(Mandatory=$true)][string]$LineToAdd
+    )
     if (-not (Test-Path $ProfilePath)) {
         New-Item -ItemType File -Path $ProfilePath -Force | Out-Null
         Write-Info "Created new PowerShell profile: $ProfilePath"
@@ -471,12 +494,12 @@ try {
             Write-Warning "`nIMPORTANT: Restart your terminal for changes to take effect"
             Write-Warning "The theme will activate in NEW PowerShell sessions"
         }
-        Report-Success "Oh My Posh hul10 theme installed and configured"
+        Write-SuccessReport "Oh My Posh hul10 theme installed and configured"
     } else {
         Write-Info "Skipped Oh My Posh terminal customization"
     }
 } catch {
-    Report-Error "Oh My Posh installation/configuration failed" $_
+    Write-ErrorReport "Oh My Posh installation/configuration failed" $_
 }
 
 # =========================
@@ -489,7 +512,7 @@ try {
 
     if ($script:SuccessOperations.Count -gt 0) {
         Write-Host "`nSUCCESSFUL OPERATIONS ($($script:SuccessOperations.Count)):" -ForegroundColor Green
-        foreach ($success in $script:SuccessOperations) { Write-Host "  $success" }
+        foreach ($success in $script:SuccessOperations) { Write-Host "  $success" -ForegroundColor Green }
     }
 
     if ($script:Errors.Count -eq 0) {
@@ -497,7 +520,7 @@ try {
         Show-InfoBox "✅ Setup Complete!`n`nAll operations completed successfully.`n`nLog file: $LogPath" -Title "Success"
     } else {
         Write-Host "`nERRORS ENCOUNTERED ($($script:Errors.Count)):" -ForegroundColor Red
-        foreach ($error in $script:Errors) { Write-Host "  $error" }
+        foreach ($errorMsg in $script:Errors) { Write-Host "  $errorMsg" -ForegroundColor Red }
 
         # Convert/Export structured errors
         $errTxtPath  = Join-Path $LogDir "WinForge_Errors_$timestamp.txt"
@@ -533,5 +556,5 @@ finally {
     try { Invoke-Item -LiteralPath $LogPath } catch { Write-Warning "Could not open log file: $($_.Exception.Message)" }
 
     # Final goodbye line
-    Write-Host "Sayonara, hope we meet again."
+    Write-Host "`nSayonara, hope we meet again." -ForegroundColor Magenta
 }
