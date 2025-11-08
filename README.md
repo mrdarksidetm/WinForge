@@ -1,21 +1,25 @@
 <div align="center">
-<img src="assets\images\Real-BlackIcon.png" alt="WinForge Logo" width="192" />
+<img src="assets\images\Real-BlackIcon.png" alt="WinForge Logo" width="192" /> <!-- Added the WinForge Logo -->
 <h1>WinForge</h1>
 
-![GitHub License](https://img.shields.io/github/license/mrdarksidetm/winforge?style=for-the-badge&label=License&labelColor=%237126eb&color=%239d70e6)
-![GitHub last commit](https://img.shields.io/github/last-commit/mrdarksidetm/winforge?style=for-the-badge&label=Last%20Commit&labelColor=%230f8c06&color=%235ecc56)
-![GitHub Release](https://img.shields.io/github/v/release/mrdarksidetm/winforge?style=for-the-badge&label=Release&labelColor=%235c5003&color=%23cfb92d)
-![GitHub Repo stars](https://img.shields.io/github/stars/mrdarksidetm/winforge?style=for-the-badge&label=Stars&labelColor=%238c2515&color=%23e8988b)
-![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/mrdarksidetm/winforge/total?style=for-the-badge&label=downloads&labelColor=%230e1433&color=%234457b8)
+<!-- From line 6 to 10 added License, Last commit, New Release, Stars, Assests Download Tracker-->
+<a href="LICENSE"><img src="https://img.shields.io/github/license/mrdarksidetm/winforge?style=for-the-badge&label=License&labelColor=%237126eb&color=%239d70e6" alt="GitHub License"></a> 
+<a href="https://github.com/mrdarksidetm/WinForge/commits"><img src="https://img.shields.io/github/last-commit/mrdarksidetm/winforge?style=for-the-badge&label=Last%20Commit&labelColor=%230f8c06&color=%235ecc56" alt="GitHub last commit"></a>
+<a href="https://github.com/mrdarksidetm/WinForge/releases/latest"><img src="https://img.shields.io/github/v/release/mrdarksidetm/winforge?style=for-the-badge&label=Release&labelColor=%235c5003&color=%23cfb92d" alt="GitHub Release"></a>
+<a href=""><img src="https://img.shields.io/github/stars/mrdarksidetm/winforge?style=for-the-badge&label=Stars&labelColor=%238c2515&color=%23e8988b" alt="GitHub Repo stars"></a>
+<a href=""><img src="https://img.shields.io/github/downloads/mrdarksidetm/winforge/total?style=for-the-badge&label=downloads&labelColor=%230e1433&color=%234457b8" alt="GitHub Downloads (all assets, all releases"></a>
 
-<h3>Winforge: The Ultimate Win 11 Experience</h3>
+<h3>WinForge: The Ultimate Win 11 Experience</h3>
 
-[Features](https://github.com/mrdarksidetm/WinForge/README.md#-main-features) • [Installation](https://github.com/mrdarksidetm/WinForge/README.md#-installation) • [Contact](https://github.com/mrdarksidetm/WinForge/README.md#-contact) • [License](https://github.com/mrdarksidetm/WinForge/README.md#-License)
+[Features](https://github.com/mrdarksidetm/WinForge?tab=readme-ov-file#-main-features) • [Installation](https://github.com/mrdarksidetm/WinForge?tab=readme-ov-file#-installation) • [Contact](https://github.com/mrdarksidetm/WinForge?tab=readme-ov-file#-contact) • [License](https://github.com/mrdarksidetm/WinForge?tab=readme-ov-file#-license)
 
+<!-- For releases in both Github and Gitlab -->
 <a href="https://github.com/mrdarksidetm/WinForge/releases/latest"><img src="assets/images/Github.png" height=80 alt="Github Release" target=blank></a>
-<a href=""><img src="assets/images/Gitlab.png" height=80 alt="Gitlab Release" target=blank></a>
+<a href="https://gitlab.com/mrdarksidetm/WinForge/releases/latest"><img src="assets/images/Gitlab.png" height=80 alt="Gitlab Release" target=blank></a>
 
 </div>
+
+<img src="assets\images\WinForge-Preview.png" alt="Preview" target=blank /> <!-- WinForge Banner -->
 
 ## 🌟 Main Features
 
@@ -52,9 +56,9 @@ WinForge is your complete Windows 11 optimization toolkit - fast, secure, and pr
 
 # 🪄 Installation
 
-This is a Powershell script that is not digitally signed so you need to run some commands.
+**This is a Powershell script that is not digitally signed so you need to run some commands.**
 
-1. Download the zip from the latest [release](https://github.com/mrdarksidetm/WinForge/releases/latest)
+1. Download the zip from the latest [releases](https://github.com/mrdarksidetm/WinForge/releases/latest) <!-- Link to the latest release -->
 2. Unzip it from any of the Unzipping Program
 3. Open `Terminal (Admin)` by right clicking on start button
 4. Paste this command.
@@ -73,7 +77,7 @@ I have also provided some files for **Chris Titus Utility** & **Winhance**. That
 > If you have downloaded the zip format then it contains the pre configured import files for both **Chris Titus Utility** and **Winhance**
 
 And you're done. The script will ask you questions of what you wanna do?
-If you wanna know the exact things that the script is gonna do then [visit this page](docs/working.md)</n>
+If you wanna know the exact things that the script is gonna do then [visit this page](docs/working.md)</n> <!-- Linked new page for all the code actions and steps it will perform -->
 
 The default is set to **NO**.
 
@@ -140,3 +144,10 @@ If this sparked joy (or saved your sanity), fuel the fire!
 <br>
 
 **🌟 Future Tease:** Signed EXE wrapper incoming—stay tuned via Releases. Questions? Open an Issue. Let's build better Windows, one forge at a time.
+
+<!--  
+If you're reading that means you have visited to the depts just like I had and you alos love code and ways to customise your machine your way.
+Thank you, hope our paths cross once again
+But hey for today it's time to leave
+Love from India <3
+-->
