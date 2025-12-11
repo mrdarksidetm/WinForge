@@ -1,4 +1,4 @@
-﻿#Requires -Version 5.1
+#Requires -Version 5.1
 <#
     WinForge-OptionalSetup.ps1
     Version: 4.1 – FINAL 100% BULLETPROOF EDITION
@@ -29,14 +29,12 @@ $Files = @{
     WinUtil  = "$CacheDir\winutil.ps1"
     Winhance = "$CacheDir\Winhance.exe"
     WebView2 = "$CacheDir\WebView2.exe"
-    MAS      = "$CacheDir\MAS_AIO.cmd" 
 }
 
 $Urls = @{
     WinUtil  = "https://github.com/ChrisTitusTech/winutil/releases/latest/download/winutil.ps1"
     Winhance = "https://github.com/memstechtips/Winhance/releases/latest/download/Winhance.Installer.exe"
     WebView2 = "https://go.microsoft.com/fwlink/p/?LinkId=2124703"
-    MAS = "https://dev.azure.com/massgrave/Microsoft-Activation-Scripts/_apis/git/repositories/Microsoft-Activation-Scripts/items?path=/MAS/All-In-One-Version-KL/MAS_AIO.cmd&download=true"
 }
 
 # ==================================================================
@@ -136,11 +134,11 @@ Write-Host $banner -ForegroundColor Cyan
 # CORE FUNCTIONS
 # ==================================================================
 $script:Success = [System.Collections.Generic.List[string]]::new()
-$script:Errors  = [System.Collections.Generic.List[string]]::new()
+$script:Errors = [System.Collections.Generic.List[string]]::new()
 
 function Success { param($m) $script:Success.Add($m); Write-Host "SUCCESS: $m" -ForegroundColor Green }
-function Error   { param($m) $script:Errors.Add($m);  Write-Host "ERROR: $m"   -ForegroundColor Red }
-function Info    { param($m) Write-Host "INFO: $m" -ForegroundColor Cyan }
+function Error { param($m) $script:Errors.Add($m); Write-Host "ERROR: $m"   -ForegroundColor Red }
+function Info { param($m) Write-Host "INFO: $m" -ForegroundColor Cyan }
 
 function Invoke-SmartDownload {
     param([string]$Url, [string]$Path, [string]$Name)
@@ -169,7 +167,8 @@ function Invoke-SmartDownload {
         Write-Host "✅ $Name downloaded!" -ForegroundColor Green
         $wc.Dispose()
         return $true
-    } catch {
+    }
+    catch {
         Write-Host "❌ Failed: $($_.Exception.Message)" -ForegroundColor Red
         if ($wc) { $wc.Dispose() }
         return $false
@@ -208,7 +207,8 @@ function Set-SecureDns {
             if (-not (Get-DnsClientDohServerAddress -ServerAddress $s -ErrorAction SilentlyContinue)) {
                 Add-DnsClientDohServerAddress -ServerAddress $s -DohTemplate $DohTemplate -AllowFallbackToUdp $true -AutoUpgrade $true -ErrorAction SilentlyContinue
             }
-        } catch {
+        }
+        catch {
             Info "DoH configuration skipped for $s (may not be available on this Windows version)"
         }
     }
@@ -218,7 +218,7 @@ function Set-SecureDns {
     Success "Secure DNS + DoH applied perfectly! 🛡️"
 }
 
-function Confirm-Yes { param($p) do { $a = Read-Host "$p [Y/n] (default: YES)"; if([string]::IsNullOrWhiteSpace($a)) {return $true}; $a=$a.Trim().ToLower() } while($a -notin 'y','yes','n','no'); return ($a -in 'y','yes') }
+function Confirm-Yes { param($p) do { $a = Read-Host "$p [Y/n] (default: YES)"; if ([string]::IsNullOrWhiteSpace($a)) { return $true }; $a = $a.Trim().ToLower() } while ($a -notin 'y', 'yes', 'n', 'no'); return ($a -in 'y', 'yes') }
 
 # ==================================================================
 # MAIN SETUP
@@ -230,14 +230,10 @@ try {
     if (Confirm-Yes "`n🪄 Activate Windows permanently (HWID/Ohook/KMS38)?") {
         Write-Host "`nActivating Windows using MASSGRAVE script (safe & trusted)..." -ForegroundColor Magenta
         try {
-            if (-not (Test-Path $Files.MAS)) { Invoke-SmartDownload $Urls.MAS $Files.MAS "Microsoft Activation Script" }
-            if (Test-Path $Files.MAS) {
-                Write-Host "`n Launching Activation Script in NEW WINDOW..." -ForegroundColor Magenta
-                Start-Process cmd.exe -ArgumentList "/c `"$($Files.MAS)`""
-                Success "Windows activation script launched in new window!"
-            }
-            Read-Host "`nPress ENTER when activation is complete (or skip if already activated)"
-        } catch {
+            Start-Process powershell -ArgumentList '-NoProfile -Command "irm https://get.activated.win | iex"'
+            Success "Windows activation script executed!"
+        }
+        catch {
             Error "Activation failed — but your PC is still god-tier anyway"
         }
     }
@@ -263,11 +259,12 @@ try {
 ╚══════════════════════════════════════════════════════════╝
 "@ -ForegroundColor Magenta
             }
-                Start-Process pwsh.exe -ArgumentList "-NoProfile -File `"$($Files.WinUtil)`""
-                Read-Host "`nPress ENTER when you're done..."
-                Success "WinUtil completed"
+            Start-Process pwsh.exe -ArgumentList "-NoProfile -File `"$($Files.WinUtil)`""
+            Read-Host "`nPress ENTER when you're done..."
+            Success "WinUtil completed"
             
-        } catch {
+        }
+        catch {
             Error "WinUtil failed: $($_.Exception.Message)"
         }
     }
@@ -276,7 +273,8 @@ try {
         try {
             if (-not (Test-Path $Files.Winhance)) { Invoke-SmartDownload $Urls.Winhance $Files.Winhance "Winhance" }
             if (Test-Path $Files.Winhance) { Start-Process $Files.Winhance -Wait; Success "Winhance launched — Edge is gone" }
-        } catch {
+        }
+        catch {
             Error "Winhance failed: $($_.Exception.Message)"
         }
     }
@@ -285,11 +283,13 @@ try {
         try {
             $p = Read-Host "`n(A)dGuard or (C)loudflare? [A/c] (default: C)"
             if ([string]::IsNullOrWhiteSpace($p) -or $p.Trim().ToLower().StartsWith('c')) {
-                Set-SecureDns -IPv4 @('1.1.1.1','1.0.0.1') -IPv6 @('2606:4700:4700::1111','2606:4700:4700::1001') -DohTemplate 'https://cloudflare-dns.com/dns-query'
-            } else {
-                Set-SecureDns -IPv4 @('94.140.14.14','94.140.15.15') -IPv6 @('2a10:50c0::ad1:ff','2a10:50c0::ad2:ff') -DohTemplate 'https://dns.adguard-dns.com/dns-query'
+                Set-SecureDns -IPv4 @('1.1.1.1', '1.0.0.1') -IPv6 @('2606:4700:4700::1111', '2606:4700:4700::1001') -DohTemplate 'https://cloudflare-dns.com/dns-query'
             }
-        } catch {
+            else {
+                Set-SecureDns -IPv4 @('94.140.14.14', '94.140.15.15') -IPv6 @('2a10:50c0::ad1:ff', '2a10:50c0::ad2:ff') -DohTemplate 'https://dns.adguard-dns.com/dns-query'
+            }
+        }
+        catch {
             Error "DNS configuration failed: $($_.Exception.Message)"
         }
     }
@@ -298,7 +298,8 @@ try {
         try {
             if (-not (Test-Path $Files.WebView2)) { Invoke-SmartDownload $Urls.WebView2 $Files.WebView2 "WebView2 Runtime" }
             if (Test-Path $Files.WebView2) { Start-Process $Files.WebView2 -ArgumentList "/silent /install" -Wait; Success "WebView2 installed" }
-        } catch {
+        }
+        catch {
             Error "WebView2 installation failed: $($_.Exception.Message)"
         }
     }
@@ -316,21 +317,24 @@ try {
             if (-not (Test-Path $PROFILE)) { New-Item -ItemType File -Path $PROFILE -Force | Out-Null }
             if (-not (Select-String -Path $PROFILE -Pattern "oh-my-posh" -Quiet -ErrorAction SilentlyContinue 2>$null)) { Add-Content -Path $PROFILE -Value "`n$line" }
             Success "Oh My Posh installed! Restart terminal ✨"
-        } catch {
+        }
+        catch {
             Error "Oh My Posh installation failed: $($_.Exception.Message)"
         }
     }
 
-} catch {
+}
+catch {
     Error "Critical error in main setup: $($_.Exception.Message)"
-} finally {
+}
+finally {
     # CLEANUP
     Remove-Item $CacheDir -Recurse -Force -ErrorAction SilentlyContinue
 
     Write-Host "`n ====================================================================================="  -ForegroundColor Magenta
     Write-Host "                   WINFORGE 2025 v4.1 COMPLETE! 👑✨" -ForegroundColor Green
     Write-Host "                   $(Get-Date -Format 'dd MMM yyyy – HH:mm')" -ForegroundColor Cyan
-    Write-Host "         Success: $($script:Success.Count)           Errors: $($script:Errors.Count)" -ForegroundColor $(if($script:Errors.Count -eq 0){'Green'}else{'Red'})
+    Write-Host "         Success: $($script:Success.Count)           Errors: $($script:Errors.Count)" -ForegroundColor $(if ($script:Errors.Count -eq 0) { 'Green' }else { 'Red' })
     Write-Host "         Cache deleted. No evidence. 🥷" -ForegroundColor Yellow
     Write-Host "         Log → $LogPath" -ForegroundColor Cyan
     Write-Host "`n =====================================================================================" -ForegroundColor Magenta
@@ -349,7 +353,8 @@ try {
 
         Start-Process $mailto -ErrorAction SilentlyContinue
         Invoke-Item $LogPath -ErrorAction SilentlyContinue
-    } else {
+    }
+    else {
         # SHOW SUCCESS PATH - Everything worked perfectly
         Write-Host @"
 
