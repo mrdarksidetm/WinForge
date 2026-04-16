@@ -2,14 +2,14 @@
 <img src="assets\images\Real-BlackIcon.png" alt="WinForge Logo" width="192" /> <!-- Added the WinForge Logo -->
 <h1>WinForge</h1>
 
-<!-- From line 6 to 10 added License, Last commit, New Release, Stars, Assests Download Tracker-->
+<!-- Updated version to v5.0 -->
 <a href="LICENSE"><img src="https://img.shields.io/github/license/mrdarksidetm/winforge?style=for-the-badge&label=License&labelColor=%237126eb&color=%239d70e6" alt="GitHub License"></a>
 <a href="https://github.com/mrdarksidetm/WinForge/commits"><img src="https://img.shields.io/github/last-commit/mrdarksidetm/winforge?style=for-the-badge&label=Last%20Commit&labelColor=%230f8c06&color=%235ecc56" alt="GitHub last commit"></a>
-<a href="https://github.com/mrdarksidetm/WinForge/releases/latest"><img src="https://img.shields.io/github/v/release/mrdarksidetm/winforge?style=for-the-badge&label=Release&labelColor=%235c5003&color=%23cfb92d" alt="GitHub Release"></a>
+<a href="https://github.com/mrdarksidetm/WinForge/releases/latest"><img src="https://img.shields.io/badge/Release-v5.0-gold?style=for-the-badge&labelColor=%235c5003" alt="GitHub Release"></a>
 <a href=""><img src="https://img.shields.io/github/stars/mrdarksidetm/winforge?style=for-the-badge&label=Stars&labelColor=%238c2515&color=%23e8988b" alt="GitHub Repo stars"></a>
 <a href=""><img src="https://img.shields.io/github/downloads/mrdarksidetm/winforge/total?style=for-the-badge&label=downloads&labelColor=%230e1433&color=%234457b8" alt="GitHub Downloads (all assets, all releases"></a>
 
-<h3>WinForge: The Ultimate Win 11 Experience</h3>
+<h3>WinForge v5.0: The Ultimate Win 11 Experience</h3>
 
 [Features](https://github.com/mrdarksidetm/WinForge?tab=readme-ov-file#-main-features) • [Installation](https://github.com/mrdarksidetm/WinForge?tab=readme-ov-file#-installation) • [Contact](https://github.com/mrdarksidetm/winforge#%EF%B8%8F-contact) • [License](https://github.com/mrdarksidetm/winforge#%EF%B8%8F-licensec)
 
@@ -21,38 +21,17 @@
 
 <img src="assets\images\WinForge-Preview.png" alt="Preview" target=blank /> <!-- WinForge Banner -->
 
-## 🌟 Main Features
+## 🌟 Main Features (v5.0 Next-Gen)
 
-* **✅ Added Support for MAS** Microsoft Activation Script can activate your windows securely.
-
-* **🛠️ Chris Titus WinUtil Integration:** One-click debloating, optimization, and Windows customization using industry-standard utilities with preset configurations​
-* **🚀 System Performance Boost:** Remove bloatware, disable unnecessary services, optimize startup programs, and maximize system resource efficiency for faster performance​
-
-* **🧹 Smart Debloating:** Safely remove pre-installed Windows apps (Cortana, OneDrive notifications, Xbox, Games), telemetry services, and unwanted background processes while maintaining system stability​
-
-* **🔒 Privacy & Security Hardening:** Disable telemetry, disable data collection, disable Cortana tracking, block invasive Windows services, and implement security best practices without breaking functionality​
-
-* **📲 Edge Browser Removal:** One-click removal of Microsoft Edge using Winhance utility with automatic replacement options and system cleanup​
-
-* **🌐 DNS Optimization with DoH:** Two DNS profiles (AdGuard with ad-blocking or Cloudflare for speed) with encrypted DNS-over-HTTPS (DoH) for privacy and performance​
-
-* **🔐 Ad-Blocking DNS:** AdGuard DNS automatically blocks ads, malware, and phishing sites across all applications without additional software​
-
-* **⚡ Speed Optimized DNS:** Cloudflare DNS (1.1.1.1) for maximum internet speed with privacy protection and DNSSEC validation​
-
-* **🔐 DNS-over-HTTPS (DoH):** Military-grade encryption for all DNS queries preventing ISP/network monitoring and DNS hijacking attacks​
-
-* **🌍 IPv4 & IPv6 Support:** Dual-stack DNS configuration for both IPv4 and IPv6 networks with automatic fallback for compatibility​
-
-* **🧩 WebView2 Runtime Auto-Install:** Automatic installation of Microsoft WebView2 Runtime after Edge removal to maintain app compatibility (no broken applications)​
-
-* **🎨 Terminal Customization:** Oh My Posh theme engine installation with hul10 professional theme for beautiful PowerShell 7 terminal with git integration and powerline fonts​
-
-* **💾 Comprehensive Logging:** Automatic session transcript logging to Winforge_Logs/ with timestamp, errors exported to both TXT and JSON formats for troubleshooting and auditing​
-
-* **🛡️ Secure Download Verification:** SHA-256 hash verification for all downloaded scripts/executables with security warnings before execution​
-
-* **⚙️ Group Policy Detection:** Automatic detection of Group Policy DNS settings with warnings to prevent overriding corporate/managed configurations​
+* **✅ Windows Recall & AI Purge:** Securely remove Microsoft Recall and Copilot to reclaim your privacy and system resources.
+* **🎮 Ultimate Game Mode:** One-click optimization for maximum FPS, low latency, and high-performance power profiles.
+* **🔄 Winget App Updater:** Automatically keep all your installed applications updated to their latest secure versions.
+* **🛠️ Chris Titus WinUtil Integration:** One-click debloating, optimization, and Windows customization using industry-standard utilities.
+* **🚀 MASSGRAVE (MAS) Integration:** Secure, permanent Windows activation using trusted hardware-bound methods.
+* **⚡ Speed Optimized DNS:** Cloudflare or AdGuard DNS for maximum internet speed with privacy protection and DoH encryption.
+* **🧹 Smart Debloating:** Safely remove pre-installed Windows apps (Cortana, OneDrive notifications, Xbox, Games) and unwanted background processes.
+* **🔒 Privacy & Security Hardening:** Disable telemetry, data collection, and block invasive Windows services without breaking functionality.
+* **🎨 Terminal Customization:** Oh My Posh theme engine installation for a beautiful, professional PowerShell terminal experience.
 
 WinForge is your complete Windows 11 optimization toolkit - fast, secure, and professional-grade! 🎉
 

@@ -1,16 +1,15 @@
 ---
-layout: post  # Or 'default' if Indigo has it
-title: WinForge – Windows Optimization Toolkit
+layout: default
+title: Home
 description: 🚀 Streamline Windows 11, Debloat with WinUtil, enhance via WinHance, tune DNS, remove Edge safely, and theme your terminal. Privacy-first, one-click magic.
 permalink: /
-pagination:
-  enabled: true
 ---
 
 # 🌟 WinForge: Forge Your Windows, Effortlessly
 
 
-![WinForge Banner](assets\images\icons\android-chrome-192x192.png)  
+<img src="{{ '/assets/images/icons/android-chrome-192x192.png' | relative_url }}" alt="WinForge Logo" style="width: 128px; display: block; margin: 0 auto;" />
+
 *Your all-in-one PowerShell wizard for a lean, lightning-fast, and *yours* Windows 11. Say goodbye to bloat—hello to bliss. No dev skills required; just pure customization joy.*
 
 

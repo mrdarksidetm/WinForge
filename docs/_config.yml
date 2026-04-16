@@ -1,8 +1,23 @@
 # Site settings
 title: WinForge
 description: Windows 11 Optimization Tool
+bio: "Forge Your Windows, Effortlessly. 🚀"
 url: "https://mrdarksidetm.github.io"
 baseurl: "/WinForge"
+picture: assets/images/profile.jpg
+
+# Social handles
+github: mrdarksidetm/WinForge
+email: contact.dsidetm@gmail.com
+twitter: mrdarksidetm
+
+# Theme settings
+dark-theme: auto # "auto", true, or false
+animation: true
+blog: true
+projects: true
+about: true
+width: large
 
 # Theme (remote GitHub repo)
 remote_theme: sergiokopplin/indigo
