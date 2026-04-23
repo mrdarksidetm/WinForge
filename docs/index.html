@@ -1,20 +1,93 @@
----\nlayout: null\n---\n<!DOCTYPE html>
-
-<html class="scroll-smooth" lang="en"><head>${head}</head>
+---
+layout: null
+---
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>WinForge - Windows. Elevated.</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0061A4',
+                        'primary-dim': '#004689',
+                        surface: '#FBF9F9',
+                        'on-surface': '#313234',
+                        'surface-container': '#EFEDEE',
+                        'wf-primary': '#0061A4',
+                        'wf-on-surface': '#313234'
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        lg: "1rem",
+                        xl: "1.5rem",
+                        full: "9999px",
+                        'xl-card': '24px'
+                    },
+                    fontFamily: {
+                        sans: ["Google Sans Flex", "Inter", "sans-serif"],
+                        headline: ["Google Sans Flex", "sans-serif"],
+                        body: ["Google Sans Flex", "sans-serif"],
+                        emoji: ["iOS Emoji", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Google Sans Flex';
+            src: url('https://mrdarksidetm.github.io/Wallet-Flutter/fonts/google-sans-flex.ttf') format('truetype');
+            font-weight: 100 900;
+        }
+        @font-face {
+            font-family: 'iOS Emoji';
+            src: url('https://mrdarksidetm.github.io/Wallet-Flutter/fonts/ios-emoji.ttf') format('truetype');
+        }
+        body {
+            background-color: #FBF9F9;
+            color: #313234;
+            font-family: 'Google Sans Flex', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .emoji { font-family: 'iOS Emoji', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(0, 97, 164, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0, 97, 164, 0.03) 1px, transparent 1px);
+        }
+        .terminal-glass {
+            background: rgba(30, 30, 30, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-panel {
+            background: rgba(239, 237, 238, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 97, 164, 0.05);
+        }
+    </style>
+</head>
 <body class="min-h-screen flex flex-col bg-grid">
 <!-- TopNavBar -->
-
 <nav class="fixed top-0 w-full z-50 bg-[#FBF9F9]/80 backdrop-blur-md border-b border-slate-200/50">
     <div class="max-w-7xl mx-auto px-6 flex justify-between items-center h-20">
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/20 p-2">
-                <img src="./logo.svg" alt="logo" class="w-full h-full" />
+                <img src="https://mrdarksidetm.github.io/Wallet-Flutter/logo.svg" alt="logo" class="w-full h-full" />
             </div>
             <div class="text-2xl font-black tracking-tighter text-slate-900 uppercase">WinForge</div>
         </div>
         <div class="hidden md:flex items-center gap-6 font-medium tracking-tight">
-            <a class="text-slate-600 hover:text-primary transition-all px-3 py-2" href="https://mrdarksidetm.github.io">Ecosystem</a>
-            <a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">WinForge</a>
+            <a class="text-slate-600 hover:text-primary transition-all px-3 py-2" href="https://mrdarksidetm.github.io/">Ecosystem</a>
+            <a class="text-primary font-bold border-b-2 border-primary pb-1" href="https://mrdarksidetm.github.io/WinForge/">WinForge</a>
             <a class="text-slate-600 hover:text-primary transition-all px-3 py-2" href="https://mrdarksidetm.github.io/Wallet-Flutter/">Wallet</a>
             <a class="text-slate-600 hover:text-primary transition-all px-3 py-2" href="https://github.com/mrdarksidetm/winforge">GitHub</a>
         </div>
@@ -25,169 +98,171 @@
 </nav>
 
 <main class="flex-grow pt-28">
-<!-- Hero Section -->
-<section class="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32 overflow-hidden">
-<!-- Decorative background blob -->
-<div aria-hidden="true" class="absolute top-0 right-0 -z-10 transform-gpu blur-3xl">
-<div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#0061A4] to-[#a3defe] opacity-20" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
-</div>
-<div class="text-center max-w-4xl mx-auto mb-16">
-<h1 class="font-headline font-black text-6xl md:text-8xl tracking-tighter text-wf-on-surface mb-6 leading-none">
-                    Windows.<br/>
-<span class="text-wf-primary">Elevated.</span>
-</h1>
-<p class="font-body text-xl md:text-2xl text-slate-600 leading-relaxed font-light max-w-2xl mx-auto">
-                    The elite PowerShell toolkit for the modern power user. Strip the bloat, reclaim your privacy, and unleash raw performance.
-                </p>
-<div class="mt-10 flex justify-center gap-4">
-<button class="bg-wf-primary text-white px-10 py-5 rounded-full font-bold text-lg hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-wf-primary/30 flex items-center gap-2">
-<span class="material-symbols-outlined">download</span> Download WinForge
-                    </button>
-</div>
-</div>
-<!-- Terminal Visual -->
-<div class="w-full max-w-5xl mx-auto mt-16 rounded-[32px] terminal-glass overflow-hidden shadow-2xl relative group">
-<!-- Mac-like header -->
-<div class="bg-slate-800/50 px-6 py-4 flex items-center gap-2 border-b border-white/5">
-<div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-<div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-<div class="w-3 h-3 rounded-full bg-green-500/80"></div>
-<div class="ml-4 text-xs font-mono text-slate-400">admin@winforge: ~</div>
-</div>
-<!-- Terminal Content -->
-<div class="p-8 font-mono text-sm md:text-base leading-relaxed text-slate-300">
-<p><span class="text-emerald-400">PS C:\&gt;</span> Initialize-WinForge -Mode Aggressive</p>
-<p class="mt-2 text-slate-400">[*] Analyzing system architecture...</p>
-<p class="text-slate-400">[*] Purging telemetry modules...</p>
-<p><span class="text-amber-400">[WARNING]</span> Windows Recall detected. Isolating...</p>
-<p class="text-emerald-400">[OK] Privacy Shield deployed successfully.</p>
-<p class="mt-2"><span class="text-emerald-400">PS C:\&gt;</span> Optimize-GamingSubsystem</p>
-<p class="text-slate-400">[*] Reallocating thread priorities...</p>
-<p class="text-emerald-400">[OK] Latency reduced by 22%.</p>
-<span class="animate-pulse">_</span>
-</div>
-</div>
-</section>
-<!-- Stats Section -->
-<section class="py-20 bg-white">
-<div class="max-w-7xl mx-auto px-6 lg:px-8">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-12 divide-y md:divide-y-0 md:divide-x divide-slate-200">
-<div class="text-center py-6">
-<div class="text-5xl md:text-6xl font-black tracking-tighter text-wf-primary mb-2">100k+</div>
-<div class="text-sm font-bold uppercase tracking-widest text-slate-500">Downloads</div>
-</div>
-<div class="text-center py-6">
-<div class="text-5xl md:text-6xl font-black tracking-tighter text-wf-on-surface mb-2">+25%</div>
-<div class="text-sm font-bold uppercase tracking-widest text-slate-500">Performance Gains</div>
-</div>
-<div class="text-center py-6">
-<div class="text-5xl md:text-6xl font-black tracking-tighter text-slate-400 mb-2">1M+</div>
-<div class="text-sm font-bold uppercase tracking-widest text-slate-500">Lines of Code Forged</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Bento Grid Features -->
-<section class="py-24 max-w-7xl mx-auto px-6 lg:px-8">
-<div class="mb-16">
-<h2 class="text-4xl md:text-5xl font-black tracking-tighter text-wf-on-surface mb-4">Precision Engineering.</h2>
-<p class="text-xl text-slate-600 font-light">Tools forged for uncompromising control.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
-<!-- Feature 1: Privacy (Span 2 cols) -->
-<div class="md:col-span-2 glass-panel rounded-2xl p-8 flex flex-col justify-between relative overflow-hidden group hover:border-wf-primary/30 transition-colors">
-<div class="absolute -right-10 -top-10 w-64 h-64 bg-wf-primary/5 rounded-full blur-3xl group-hover:bg-wf-primary/10 transition-colors"></div>
-<div>
-<span class="material-symbols-outlined text-4xl text-wf-primary mb-4 block">shield_lock</span>
-<h3 class="text-2xl font-bold tracking-tight mb-2">AI &amp; Recall Purge</h3>
-<p class="text-slate-600 max-w-md">Reclaim your OS from invasive tracking. Completely disable Windows Recall, Cortana, and aggressive telemetry with a single command.</p>
-</div>
-<!-- Visual abstraction of shield -->
-<div class="h-24 w-full rounded-xl bg-slate-100 flex items-center justify-center border border-slate-200 mt-4 relative overflow-hidden">
-<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=')] [mask-image:linear-gradient(to_bottom,white,transparent)] opacity-50"></div>
-<div class="w-16 h-16 rounded-full border-4 border-wf-primary/20 flex items-center justify-center">
-<span class="material-symbols-outlined text-wf-primary">verified_user</span>
-</div>
-</div>
-</div>
-<!-- Feature 2: Performance -->
-<div class="glass-panel rounded-2xl p-8 flex flex-col justify-between group hover:border-wf-primary/30 transition-colors">
-<div>
-<span class="material-symbols-outlined text-4xl text-wf-on-surface mb-4 block">speed</span>
-<h3 class="text-2xl font-bold tracking-tight mb-2">Game Mode</h3>
-<p class="text-slate-600">Reallocates priority threads.</p>
-</div>
-<div class="mt-4 p-4 rounded-xl bg-slate-900 text-white relative overflow-hidden">
-<div class="flex justify-between items-end mb-2">
-<span class="text-xs text-slate-400">Latency</span>
-<span class="text-emerald-400 font-bold">-22%</span>
-</div>
-<div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-<div class="bg-emerald-400 w-[22%] h-full rounded-full"></div>
-</div>
-<div class="flex justify-between items-end mt-4 mb-2">
-<span class="text-xs text-slate-400">FPS</span>
-<span class="text-amber-400 font-bold">+15%</span>
-</div>
-<div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-<div class="bg-amber-400 w-[85%] h-full rounded-full"></div>
-</div>
-</div>
-</div>
-<!-- Feature 3: Automation -->
-<div class="md:col-span-3 glass-panel rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-8 group hover:border-wf-primary/30 transition-colors">
-<div class="md:w-1/2">
-<span class="material-symbols-outlined text-4xl text-wf-primary mb-4 block">terminal</span>
-<h3 class="text-3xl font-bold tracking-tight mb-4">Software Automation</h3>
-<p class="text-slate-600 text-lg">One-click deployment for pristine dev environments. Install your exact stack—VS Code, Docker, Node, Git—without touching an installer GUI.</p>
-</div>
-<div class="md:w-1/2 w-full h-full min-h-[150px] rounded-xl bg-slate-50 border border-slate-200 p-6 flex flex-wrap gap-3 items-center justify-center content-center">
-<div class="px-4 py-2 bg-white rounded-full border border-slate-200 text-sm font-medium shadow-sm flex items-center gap-2">
-<span class="material-symbols-outlined text-sm">code</span> VS Code
-                        </div>
-<div class="px-4 py-2 bg-white rounded-full border border-slate-200 text-sm font-medium shadow-sm flex items-center gap-2">
-<span class="material-symbols-outlined text-sm">view_in_ar</span> Docker
-                        </div>
-<div class="px-4 py-2 bg-white rounded-full border border-slate-200 text-sm font-medium shadow-sm flex items-center gap-2">
-<span class="material-symbols-outlined text-sm">javascript</span> Node.js
-                        </div>
-<div class="px-4 py-2 bg-white rounded-full border border-slate-200 text-sm font-medium shadow-sm flex items-center gap-2">
-<span class="material-symbols-outlined text-sm">source</span> Git
-                        </div>
-<div class="w-full text-center mt-2 text-xs text-slate-400 font-mono">winget install --id ...</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Bottom CTA -->
-<section class="py-32 text-center px-6">
-<h2 class="text-5xl font-black tracking-tighter mb-8">Ready to forge your system?</h2>
-<button class="bg-wf-primary text-white px-12 py-6 rounded-full font-bold text-xl hover:opacity-90 transition-all active:scale-95 shadow-2xl shadow-wf-primary/40 flex items-center gap-3 mx-auto">
-<span class="material-symbols-outlined text-2xl">rocket_launch</span> Download WinForge Now
-            </button>
-<p class="mt-6 text-sm text-slate-500 font-mono">v2.4.1 • Requires Windows 10/11 x64</p>
-</section>
-</main>
-<!-- Footer -->
-
-<footer class="w-full bg-slate-50 border-t border-slate-200 mt-auto py-16">
-    <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-10">
-        <div class="flex items-center gap-4">
-            <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white p-2">
-                <img src="./logo.svg" alt="logo" class="w-full h-full" />
-            </div>
-            <div class="text-2xl font-black text-slate-900 tracking-tighter uppercase">WinForge</div>
+    <!-- Hero Section -->
+    <section class="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32 overflow-hidden">
+        <div aria-hidden="true" class="absolute top-0 right-0 -z-10 transform-gpu blur-3xl">
+            <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#0061A4] to-[#a3defe] opacity-20" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
         </div>
-        <div class="flex flex-wrap justify-center gap-10 text-sm font-black uppercase tracking-[0.2em] text-slate-400">
-            <a class="hover:text-primary transition-colors" href="https://mrdarksidetm.github.io">Ecosystem</a>
+        <div class="text-center max-w-4xl mx-auto mb-16">
+            <h1 class="font-headline font-black text-7xl md:text-9xl tracking-tighter text-wf-on-surface mb-6 leading-none">
+                Windows.<br/>
+                <span class="text-wf-primary italic">Elevated.</span>
+            </h1>
+            <p class="font-body text-xl md:text-2xl text-slate-600 leading-relaxed font-medium max-w-2xl mx-auto">
+                The elite PowerShell toolkit for the modern power user. Strip the bloat, reclaim your privacy, and unleash raw performance.
+            </p>
+            <div class="mt-12 flex justify-center gap-4">
+                <a href="https://github.com/mrdarksidetm/winforge/releases/latest" class="bg-wf-primary text-white px-12 py-5 rounded-full font-black text-xl hover:opacity-90 transition-all active:scale-95 shadow-2xl shadow-wf-primary/30 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">download</span> Download WinForge
+                </a>
+            </div>
+        </div>
+
+        <!-- Terminal Visual -->
+        <div class="w-full max-w-5xl mx-auto mt-16 rounded-[32px] terminal-glass overflow-hidden shadow-2xl relative group border border-white/10">
+            <div class="bg-slate-800/50 px-6 py-4 flex items-center gap-2 border-b border-white/5">
+                <div class="w-3 h-3 rounded-full bg-[#FF5F56]"></div>
+                <div class="w-3 h-3 rounded-full bg-[#FFBD2E]"></div>
+                <div class="w-3 h-3 rounded-full bg-[#27C93F]"></div>
+                <div class="ml-4 text-[10px] font-mono text-slate-400 uppercase tracking-widest font-bold">administrator: winforge.ps1</div>
+            </div>
+            <div class="p-10 font-mono text-sm md:text-base leading-relaxed text-slate-300 min-h-[300px]">
+                <p><span class="text-emerald-400 font-bold">PS C:\&gt;</span> Initialize-WinForge -Mode Aggressive</p>
+                <p class="mt-4 text-slate-400">[*] Analyzing system architecture...</p>
+                <p class="text-slate-400">[*] Purging telemetry modules...</p>
+                <p class="mt-2"><span class="text-amber-400 font-bold">[WARNING]</span> Windows Recall detected. Isolating...</p>
+                <p class="text-emerald-400 font-bold">[OK] Privacy Shield deployed successfully.</p>
+                <p class="mt-6"><span class="text-emerald-400 font-bold">PS C:\&gt;</span> Optimize-GamingSubsystem</p>
+                <p class="text-slate-400">[*] Reallocating thread priorities...</p>
+                <p class="text-emerald-400 font-bold">[OK] Latency reduced by 22%.</p>
+                <p class="text-white mt-4 animate-pulse">_</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-24 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16 divide-y md:divide-y-0 md:divide-x divide-slate-200">
+                <div class="text-center px-8">
+                    <div class="text-6xl md:text-7xl font-black tracking-tighter text-wf-primary mb-2 italic">100k+</div>
+                    <div class="text-xs font-black uppercase tracking-[0.3em] text-slate-400">Downloads</div>
+                </div>
+                <div class="text-center px-8">
+                    <div class="text-6xl md:text-7xl font-black tracking-tighter text-wf-on-surface mb-2 italic">+25%</div>
+                    <div class="text-xs font-black uppercase tracking-[0.3em] text-slate-400">Performance Gains</div>
+                </div>
+                <div class="text-center px-8">
+                    <div class="text-6xl md:text-7xl font-black tracking-tighter text-slate-300 mb-2 italic">1M+</div>
+                    <div class="text-xs font-black uppercase tracking-[0.3em] text-slate-400">Lines of Code Forged</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Grid Features -->
+    <section class="py-32 max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="mb-20">
+            <span class="text-wf-primary font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Precision Engineering</span>
+            <h2 class="text-5xl md:text-6xl font-black tracking-tighter text-wf-on-surface mb-6">Built for absolute control.</h2>
+            <p class="text-xl text-slate-600 font-semibold max-w-2xl">Tools forged for the modern power user who demands uncompromising privacy and raw speed.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 auto-rows-[350px]">
+            <!-- Feature 1: Privacy -->
+            <div class="md:col-span-2 glass-panel rounded-[32px] p-12 flex flex-col justify-between relative overflow-hidden group hover:border-wf-primary/30 transition-all duration-500 shadow-xl shadow-slate-200/20">
+                <div class="absolute -right-10 -top-10 w-80 h-80 bg-wf-primary/5 rounded-full blur-3xl group-hover:bg-wf-primary/10 transition-colors duration-700"></div>
+                <div class="z-10">
+                    <span class="material-symbols-outlined text-5xl text-wf-primary mb-8 block" style="font-variation-settings: 'FILL' 1;">shield_person</span>
+                    <h3 class="text-3xl font-black tracking-tighter mb-4">AI & Recall Purge</h3>
+                    <p class="text-slate-600 text-lg font-semibold max-w-md leading-relaxed">Reclaim your OS from invasive tracking. Completely disable Windows Recall, Cortana, and telemetry with one command.</p>
+                </div>
+                <div class="z-10 flex gap-3">
+                    <span class="px-4 py-1.5 rounded-full bg-emerald-400/10 text-emerald-600 text-[10px] font-black uppercase tracking-widest border border-emerald-400/20">Private</span>
+                    <span class="px-4 py-1.5 rounded-full bg-wf-primary/5 text-wf-primary text-[10px] font-black uppercase tracking-widest border border-wf-primary/10">Secure</span>
+                </div>
+            </div>
+
+            <!-- Feature 2: Performance -->
+            <div class="bg-primary rounded-[32px] p-12 flex flex-col justify-between text-white overflow-hidden relative group hover:shadow-2xl transition-all duration-500 shadow-primary/30">
+                <div>
+                    <span class="material-symbols-outlined text-5xl text-white mb-8 block" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                    <h3 class="text-3xl font-black tracking-tighter mb-4">Game Mode</h3>
+                    <p class="text-blue-100/90 font-semibold leading-relaxed">Suspend background noise and optimize scheduling for maximum FPS and zero jitter.</p>
+                </div>
+                <div class="mt-8">
+                    <div class="flex justify-between items-end mb-2">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-blue-200">Latency Reduction</span>
+                        <span class="text-white font-black text-xl">-22%</span>
+                    </div>
+                    <div class="w-full bg-white/10 h-3 rounded-full overflow-hidden border border-white/5">
+                        <div class="bg-white w-[85%] h-full rounded-full shadow-[0_0_15px_rgba(255,255,255,0.5)]"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 3: Automation -->
+            <div class="md:col-span-3 glass-panel rounded-[32px] p-12 flex flex-col md:flex-row items-center justify-between gap-12 group hover:border-wf-primary/30 transition-all duration-500 shadow-xl shadow-slate-200/20">
+                <div class="md:w-1/2">
+                    <span class="material-symbols-outlined text-5xl text-wf-primary mb-8 block" style="font-variation-settings: 'FILL' 1;">terminal</span>
+                    <h3 class="text-4xl font-black tracking-tighter mb-4">Software Automation</h3>
+                    <p class="text-slate-600 text-lg font-semibold leading-relaxed">One-click deployment for pristine dev environments. Install VS Code, Docker, and Node instantly via Winget.</p>
+                </div>
+                <div class="md:w-1/2 w-full grid grid-cols-2 gap-4">
+                    <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center gap-2 group-hover:scale-105 transition-transform duration-500">
+                        <span class="material-symbols-outlined text-wf-primary">code</span>
+                        <span class="text-[10px] font-black uppercase tracking-widest">VS Code</span>
+                    </div>
+                    <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center gap-2 group-hover:scale-105 transition-transform duration-500 delay-75">
+                        <span class="material-symbols-outlined text-wf-primary">view_in_ar</span>
+                        <span class="text-[10px] font-black uppercase tracking-widest">Docker</span>
+                    </div>
+                    <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center gap-2 group-hover:scale-105 transition-transform duration-500 delay-100">
+                        <span class="material-symbols-outlined text-wf-primary">javascript</span>
+                        <span class="text-[10px] font-black uppercase tracking-widest">Node.js</span>
+                    </div>
+                    <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center gap-2 group-hover:scale-105 transition-transform duration-500 delay-150">
+                        <span class="material-symbols-outlined text-wf-primary">source</span>
+                        <span class="text-[10px] font-black uppercase tracking-widest">Git</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Call to Action -->
+    <section class="max-w-7xl mx-auto px-6 mb-32">
+        <div class="bg-surface-container rounded-[48px] p-20 text-center flex flex-col items-center gap-10 relative overflow-hidden border border-wf-primary/5 shadow-2xl">
+            <div class="absolute -left-20 -bottom-20 w-96 h-96 bg-wf-primary/5 rounded-full blur-3xl animate-pulse"></div>
+            <h2 class="text-6xl md:text-7xl font-black text-on-surface tracking-tighter leading-tight">Ready to forge <br/><span class="text-wf-primary italic">your system?</span></h2>
+            <p class="text-2xl text-slate-600 font-semibold max-w-2xl leading-relaxed">
+                Join the elite power users who have reclaimed their Windows experience. Open-source, free, and powerfully engineered.
+            </p>
+            <a href="https://github.com/mrdarksidetm/winforge/releases/latest" class="bg-wf-primary text-white rounded-full px-16 py-6 font-black text-2xl hover:bg-primary-dim transition-all active:scale-95 duration-200 shadow-2xl shadow-wf-primary/40 flex items-center gap-4">
+                <span class="material-symbols-outlined text-3xl">rocket_launch</span> Download WinForge v2.4.1
+            </a>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="w-full bg-slate-50 border-t border-slate-200 mt-auto py-20">
+    <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-12">
+        <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-white p-2.5">
+                <img src="https://mrdarksidetm.github.io/Wallet-Flutter/logo.svg" alt="logo" class="w-full h-full" />
+            </div>
+            <div class="text-3xl font-black text-slate-900 tracking-tighter uppercase">WinForge</div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-12 text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">
+            <a class="hover:text-primary transition-colors" href="https://mrdarksidetm.github.io/">Ecosystem</a>
             <a class="hover:text-primary transition-colors" href="https://github.com/mrdarksidetm/winforge/tree/Beta/docs">Docs</a>
             <a class="hover:text-primary transition-colors" href="https://github.com/mrdarksidetm/winforge">GitHub</a>
             <a class="hover:text-primary transition-colors" href="mailto:contact.dsidetm@gmail.com">Contact</a>
         </div>
-        <div class="text-xs text-slate-400 font-black uppercase tracking-[0.2em]">
-            © 2026 WINFORGE <span class="emoji ml-2 text-primary">🚀</span>
+        <div class="text-[10px] text-slate-400 font-black uppercase tracking-[0.4em]">
+            © 2026 WINFORGE <span class="emoji ml-3 text-primary">🚀</span>
         </div>
     </div>
 </footer>
-
-</body></html>
+</body>
+</html>
