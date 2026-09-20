@@ -23,3 +23,16 @@ Strict Append Pattern: All updates are permanently appended to the bottom.
 - **Files Modified / Created**:
   - `docs/index.html`
   - `Version.md`
+
+### [2026-09-20 12:50:00 IST] - Standardized Vector SVG Logo & GitHub Branding Integration
+- **Author**: mrdarksidetm
+- **Status**: Completed & Deployed
+- **Updates**:
+  - Replaced legacy raster logo with crisp normalized local vector `docs/logo.svg` across navbar toolbar and hero title heading.
+  - Normalized SVG viewBox and optimized fill contrast (`#FFFFFF` on dark surfaces) ensuring brilliant visibility on dark Material 3 Expressive theme.
+  - Integrated dedicated 64x64 squircle hero logo card alongside the page heading and title.
+  - Added official GitHub SVG logos beside all GitHub mentions across navbar and footer.
+- **Files Modified / Created**:
+  - `docs/logo.svg`
+  - `docs/index.html`
+  - `Version.md`
